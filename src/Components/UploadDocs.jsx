@@ -16,6 +16,10 @@ function UploadDocs() {
                             <label htmlFor="pan-card-photo">PAN Card Photo</label>
                         </div>
                         <div className="flex items-center gap-2">
+                            <input type="checkbox" id="resume" />
+                            <label htmlFor="pan-card-photo">Resume</label>
+                        </div>
+                        <div className="flex items-center gap-2">
                             <input type="checkbox" id="voter-id" />
                             <label htmlFor="voter-id">Voter ID</label>
                         </div>
@@ -43,8 +47,8 @@ function UploadDocs() {
                             <input type="checkbox" id="payslip" />
                             <label htmlFor="payslip">Last Pay Slip</label>
                         </div>
-                        <p className="text-sm text-slate-700">** Note  All the documents mentioned here should be sent to the office <a href="">email-id</a></p>
                     </div>
+                        <p className="text-sm w-full text-slate-700">** Note  All the documents mentioned here should be sent to the office <a href="">email-id</a></p>
                 </form>
             </div>
         </>
