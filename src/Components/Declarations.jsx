@@ -1,7 +1,7 @@
 function Declarations() {
     return (
       <>
-        <div className="my-4 w-[90%] mx-auto">
+        <div className="my-4 w-[80%] mx-auto">
           <h2 className="text-xl font-semibold my-4">Declarations</h2>
           <form action="" className="space-y-2">
             <div className="flex flex-wrap gap-4">

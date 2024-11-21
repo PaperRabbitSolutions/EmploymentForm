@@ -3,7 +3,7 @@ import Emergency from '../Components/Emergency';
 function Contact() {
     return (
         <>
-            <div className="my-4 w-[90%] mx-auto">
+            <div className="my-4 w-[80%] mx-auto">
                 <h2 className="font-semibold text-xl my-4 underline">Contact Details:</h2>
                 <form className="space-y-2">
                     {/* Permanent Address in its own row */}

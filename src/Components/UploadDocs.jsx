@@ -1,7 +1,7 @@
 function UploadDocs() {
     return (
         <>
-            <div className="my-4 w-[90%] mx-auto">
+            <div className="my-4 w-[80%] mx-auto">
                 <h2 className="font-semibold text-xl my-4">Document Submission</h2>
                
                 <form action="" className="space-y-2">

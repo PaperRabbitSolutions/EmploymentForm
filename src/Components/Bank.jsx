@@ -1,7 +1,7 @@
 function Bank() {
   return (
       <>
-          <div className="my-4 w-[90%] mx-auto">
+          <div className="my-4 w-[80%] mx-auto">
               <h3 className="text-xl font-semibold my-2">Bank Details</h3>
               <form className="space-y-4">
                   
