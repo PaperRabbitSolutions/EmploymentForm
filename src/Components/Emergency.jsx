@@ -1,30 +1,46 @@
 function Emergency() {
     return (
         <>
-            <div>
+            <div className="my-4 w-[100%] mx-auto">
                 <h2 className="font-semibold underline my-4">Emergency Contact Details:</h2>
-                <form className="space-y-4">
+                <form className="space-y-2">
                     {/* Name and Relationship on the same line */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="name" className="w-1/4">Name</label>
-                            <input type="text" id="name" className="px-2 py-1 rounded-lg outline-none w-full" />
+                    <div className="flex flex-wrap gap-6">
+                        <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                            <label htmlFor="name" className="text-sm font-medium">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                className="px-2 py-1 rounded-lg outline-none w-full"
+                            />
                         </div>
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="relation" className="w-1/4">Relationship</label>
-                            <input type="text" id="relation" className="px-2 py-1 rounded-lg outline-none w-full" />
+                        <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                            <label htmlFor="relation" className="text-sm font-medium">Relationship</label>
+                            <input
+                                type="text"
+                                id="relation"
+                                className="px-2 py-1 rounded-lg outline-none w-full"
+                            />
                         </div>
                     </div>
 
                     {/* Mobile and Address on the same line */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="mobile" className="w-1/4">Mobile No.</label>
-                            <input type="number" id="mobile" className="px-2 py-1 w-full rounded-lg outline-none" />
+                    <div className="flex flex-wrap gap-6">
+                        <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                            <label htmlFor="mobile" className="text-sm font-medium">Mobile No.</label>
+                            <input
+                                type="number"
+                                id="mobile"
+                                className="px-2 py-1 rounded-lg outline-none w-full"
+                            />
                         </div>
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="address" className="w-1/4">Address</label>
-                            <input type="text" id="address" className="px-2 py-1 w-full rounded-lg outline-none" />
+                        <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                            <label htmlFor="address" className="text-sm font-medium">Address</label>
+                            <input
+                                type="text"
+                                id="address"
+                                className="px-2 py-1 rounded-lg outline-none w-full"
+                            />
                         </div>
                     </div>
                 </form>

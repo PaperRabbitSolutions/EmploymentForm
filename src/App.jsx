@@ -14,18 +14,20 @@ function App() {
   return (
     <>
       <div className='max-w-[1200px] space-y-10 bg-blue-200 mx-auto'>
-       <Personal/>
-       <Contact/>
-       <Education/>
-       <Health/>
-       <Bank/>
-       <Upload/>
-       <Office/>
-       <Declarations/>
-       
+        <Personal />
+        <Contact />
+        <Education />
+        <Health />
+        <Bank />
+        <Upload />
+        <Office />
+        <Declarations />
 
+        <div className="flex justify-center mt-4">
+          <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Submit</button>
+        </div>
       </div>
-      
+
     </>
   )
 }

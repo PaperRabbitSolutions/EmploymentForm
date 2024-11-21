@@ -4,57 +4,59 @@ function Contact() {
     return (
         <>
             <div className="my-4 w-[90%] mx-auto">
-                <h2 className="font-semibold text-xl my-4 underline ">Contact Details:</h2>
-                <form className="space-y-4">
-                    {/* Permanent and Current Address on the same line */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="permanent" className="w-1/4">Permanent Address</label>
-                            <input
-                                type="text"
-                                id="permanent"
-                                className="px-2 py-1 w-full rounded-lg outline-none"
-                            />
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="current" className="w-1/4">Current Address</label>
-                            <input
-                                type="text"
-                                id="current"
-                                className="px-2 py-1 w-full rounded-lg outline-none"
-                            />
-                        </div>
+                <h2 className="font-semibold text-xl my-4 underline">Contact Details:</h2>
+                <form className="space-y-2">
+                    {/* Permanent Address in its own row */}
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="permanent" className="text-sm font-medium">Permanent Address</label>
+                        <input
+                            type="text"
+                            id="permanent"
+                            className="px-2 py-1 w-full rounded-lg outline-none"
+                        />
+                    </div>
+
+                    {/* Alternate Address in its own row */}
+                    <div className="flex flex-col gap-1">
+                        <label htmlFor="current" className="text-sm font-medium">Alternate Address</label>
+                        <input
+                            type="text"
+                            id="current"
+                            className="px-2 py-1 w-full rounded-lg outline-none"
+                        />
                     </div>
 
                     {/* Mobile and Alternate Numbers on the same line */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="mobile" className="w-1/4">Mobile No.</label>
+                    <div className="flex flex-wrap gap-6">
+                        <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                            <label htmlFor="mobile" className="text-sm font-medium">Mobile No.</label>
                             <input
                                 type="number"
                                 id="mobile"
                                 className="px-2 py-1 w-full rounded-lg outline-none"
                             />
                         </div>
-                        <div className="flex items-center gap-2">
-                            <label htmlFor="alternate" className="w-1/4">Alternate No.</label>
+                        <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                            <label htmlFor="alternate" className="text-sm font-medium">Alternate No.</label>
                             <input
                                 type="number"
                                 id="alternate"
                                 className="px-2 py-1 w-full rounded-lg outline-none"
                             />
                         </div>
-                    </div>
 
-                    {/* Email field */}
-                    <div className="flex items-center gap-2">
-                        <label htmlFor="email" className="w-[11%]">Email</label>
+                        <div className="flex-1 flex  min-w-[200px]  flex-col gap-1">
+                        <label htmlFor="email" className="text-sm font-medium">Email</label>
                         <input
                             type="email"
                             id="email"
                             className="px-2 py-1 w-full rounded-lg outline-none"
                         />
                     </div>
+                    </div>
+
+                    {/* Email field */}
+                    
                 </form>
                 <Emergency />
             </div>
