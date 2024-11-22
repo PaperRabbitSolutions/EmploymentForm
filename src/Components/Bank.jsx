@@ -83,20 +83,20 @@ function Bank({ bankInfo, setBankInfo }) {
                 <input
                   type="radio"
                   id="old"
-                  name="taxregime"
+                  name="taxregime" // Ensure both radio buttons have the same name
                   value="old"
-                  checked={bankInfo.taxregime === 'old'}
-                  onChange={(e) => handleChange(e)}
+                  checked={bankInfo.taxregime === 'old'}  // Update the checked property to reflect state
+                  onChange={handleChange}
                   className="w-auto"
                 />
                 <label htmlFor="old" className="text-sm">Old</label>
                 <input
                   type="radio"
                   id="new"
-                  name="taxregime"
+                  name="taxregime" // Same name for both radio buttons
                   value="new"
-                  checked={bankInfo.taxregime === 'new'}
-                  onChange={(e) => handleChange(e)}
+                  checked={bankInfo.taxregime === 'new'}  // Update the checked property to reflect state
+                  onChange={handleChange}
                   className="w-auto"
                 />
                 <label htmlFor="new" className="text-sm">New</label>

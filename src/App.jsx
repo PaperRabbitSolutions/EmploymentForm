@@ -43,7 +43,13 @@ function App() {
     Current_Address: '',
     Mobile: '',
     Alternate_No: '',
-    Email: ''
+    Email: '',
+    EmergencyContact: {
+      Name: "",
+      Relationship: "",
+      Mobile: "",
+      Address: "",
+    },
   });
 
   const [educationInfo, setEducationInfo] = useState({
@@ -52,8 +58,8 @@ function App() {
     yearOfPassing: '',
     certifications: '',
     techDomain: '',
-    skills: [],  // Array to hold skills
-    newSkill: '', // Current input value for skill
+    skills: [], 
+    newSkill: '',
   });
 
   const [healthInfo, setHealthInfo] = useState({

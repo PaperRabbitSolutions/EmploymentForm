@@ -35,9 +35,9 @@ function Education({ educationInfo, setEducationInfo }) {
     <>
       <div className="my-4 w-[80%] mx-auto">
         <h3 className="text-xl font-semibold my-4">Educational Background</h3>
-        <form className="space-y-4">
+        <form className="space-y-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Qualification */}
-          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <label htmlFor="qualification" className="text-sm font-medium">Highest Qualification</label>
             <select
               id="qualification"
@@ -53,7 +53,7 @@ function Education({ educationInfo, setEducationInfo }) {
           </div>
 
           {/* University */}
-          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <label htmlFor="university" className="text-sm font-medium">University/Institute</label>
             <input
               type="text"
@@ -65,7 +65,7 @@ function Education({ educationInfo, setEducationInfo }) {
           </div>
 
           {/* Year of Passing */}
-          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <label htmlFor="yearOfPassing" className="text-sm font-medium">Year of Passing</label>
             <input
               type="date"
@@ -77,7 +77,7 @@ function Education({ educationInfo, setEducationInfo }) {
           </div>
 
           {/* Certifications */}
-          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <label htmlFor="certifications" className="text-sm font-medium">Certifications</label>
             <input
               type="text"
@@ -88,51 +88,54 @@ function Education({ educationInfo, setEducationInfo }) {
             />
           </div>
 
-          {/* Tech Domain */}
-          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-            <label htmlFor="tech-domain" className="text-sm font-medium">Domain</label>
-            <select
-              id="tech-domain"
-              value={educationInfo.techDomain}
-              onChange={(e) => setEducationInfo({ ...educationInfo, techDomain: e.target.value })}
-              className="px-2 py-1 rounded-lg outline-none w-full"
-            >
-              <option value="select">--select--</option>
-              <option value="Software Engineering">Web Developer</option>
-              <option value="Full Stack Developer">Full Stack Developer</option>
-              <option value="Data Science">Content Writer</option>
-              <option value="Cloud Computing">UI/UX Designer</option>
-              <option value="Graphic Designer">Graphic Designer</option>
-              <option value="Business Development Manager">Business Development Manager</option>
-              <option value="HR">HR</option>
-            </select>
-          </div>
-
-          {/* Skills */}
-          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-            <label htmlFor="skills" className="text-sm font-medium">Skills</label>
-            <div className="flex items-center gap-2">
-              <input
-                type="text"
-                id="skills"
-                value={educationInfo.newSkill}
-                onChange={(e) => setEducationInfo({ ...educationInfo, newSkill: e.target.value })}
+          {/* Tech Domain and Skills (on the same row) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 col-span-2">
+            {/* Domain */}
+            <div className="flex flex-col gap-1">
+              <label htmlFor="tech-domain" className="text-sm font-medium">Domain</label>
+              <select
+                id="tech-domain"
+                value={educationInfo.techDomain}
+                onChange={(e) => setEducationInfo({ ...educationInfo, techDomain: e.target.value })}
                 className="px-2 py-1 rounded-lg outline-none w-full"
-                placeholder="Type a skill and press Enter"
-              />
-              <button
-                type="button"
-                onClick={handleAddSkill}
-                className="px-2 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600"
               >
-                Add
-              </button>
+                <option value="select">--select--</option>
+                <option value="Software Engineering">Web Developer</option>
+                <option value="Full Stack Developer">Full Stack Developer</option>
+                <option value="Data Science">Content Writer</option>
+                <option value="Cloud Computing">UI/UX Designer</option>
+                <option value="Graphic Designer">Graphic Designer</option>
+                <option value="Business Development Manager">Business Development Manager</option>
+                <option value="HR">HR</option>
+              </select>
+            </div>
+
+            {/* Skills */}
+            <div className="flex flex-col gap-1">
+              <label htmlFor="skills" className="text-sm font-medium">Skills</label>
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  id="skills"
+                  value={educationInfo.newSkill}
+                  onChange={(e) => setEducationInfo({ ...educationInfo, newSkill: e.target.value })}
+                  className="px-2 py-1 rounded-lg outline-none w-full"
+                  placeholder="Type a skill and press Enter"
+                />
+                <button
+                  type="button"
+                  onClick={handleAddSkill}
+                  className="px-2 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                >
+                  Add
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Displaying Added Skills */}
           {educationInfo.skills.length > 0 && (
-            <div className="mt-4">
+            <div className="mt-4 col-span-2">
               <h4 className="text-lg font-semibold">Your Skills:</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 {educationInfo.skills.map((skill, index) => (

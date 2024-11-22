@@ -1,10 +1,12 @@
+import React from 'react';
+
 function Declarations({ declarationsInfo, setDeclarationsInfo }) {
-  // Function to handle checkbox changes
   const handleCheckboxChange = (e) => {
     const { id, checked } = e.target;
+    
     setDeclarationsInfo({
       ...declarationsInfo,
-      [id]: checked, // Dynamically update the specific checkbox value
+      [id]: checked,
     });
   };
 

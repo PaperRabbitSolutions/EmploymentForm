@@ -12,7 +12,15 @@ function Personal({ personalInfo, setPersonalInfo }) {
           [name]: checked, // Update dependent details based on the checkbox state
         },
       }));
-    } else if (type === 'radio' || type === 'select-one' || type === 'date') {
+
+    } 
+    else if (type === 'radio') {
+        setPersonalInfo((prev) => ({
+          ...prev,
+          Gender: value, // This will update the Gender field correctly
+        }));
+      }
+    else if (type === 'select-one' || type === 'date') {
       setPersonalInfo((prev) => ({
         ...prev,
         [id]: value, // Update basic field values
