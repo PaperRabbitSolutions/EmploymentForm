@@ -1,25 +1,34 @@
-import { useState } from 'react';
+import React from 'react';
 
-function Education() {
-  const [skills, setSkills] = useState([]);  // State to store the skills
-  const [newSkill, setNewSkill] = useState('');  // State to handle the current input value
-  const [techDomain, setTechDomain] = useState('');  // State to handle selected tech domain
+function Education({ educationInfo, setEducationInfo }) {
 
   // Function to handle adding a skill
   const handleAddSkill = () => {
-    if (newSkill && !skills.includes(newSkill)) {
-      if (skills.length < 8) {  // Limit to 8 skills
-        setSkills([...skills, newSkill]);
-        setNewSkill('');  // Clear the input field after adding the skill
-      } else {
-        alert('You can only add up to 8 skills');
-      }
+    if (!educationInfo.newSkill) return;  // Ensure there's something in the input
+    
+    if (educationInfo.skills.length >= 8) {
+      alert('You can only add up to 8 skills');
+      return;
+    }
+
+    // Only add the skill if it doesn't already exist
+    if (!educationInfo.skills.includes(educationInfo.newSkill)) {
+      setEducationInfo(prevState => ({
+        ...prevState,
+        skills: [...prevState.skills, prevState.newSkill],
+        newSkill: '',  // Clear the input field after adding
+      }));
+    } else {
+      alert('This skill has already been added!');
     }
   };
 
   // Function to handle deleting a skill
   const handleDeleteSkill = (skillToDelete) => {
-    setSkills(skills.filter(skill => skill !== skillToDelete));
+    setEducationInfo(prevState => ({
+      ...prevState,
+      skills: prevState.skills.filter(skill => skill !== skillToDelete),
+    }));
   };
 
   return (
@@ -27,110 +36,106 @@ function Education() {
       <div className="my-4 w-[80%] mx-auto">
         <h3 className="text-xl font-semibold my-4">Educational Background</h3>
         <form className="space-y-4">
-          {/* First Row: Highest Qualification, University, Year of Passing */}
-          <div className="flex flex-wrap gap-4">
-            {/* Highest Qualification */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="highest-Qualification" className="text-sm font-medium">Highest Qualification</label>
-              <select
-                name="qualification"
-                id="qualification"
-                className="px-2 py-1 rounded-lg outline-none w-full"
-              >
-                <option value="select">--select--</option>
-                <option value="Under Graduate">Under Graduate</option>
-                <option value="Post Graduate">Post Graduate</option>
-                <option value="Diploma">Diploma</option>
-              </select>
-            </div>
+          {/* Qualification */}
+          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <label htmlFor="qualification" className="text-sm font-medium">Highest Qualification</label>
+            <select
+              id="qualification"
+              value={educationInfo.qualification}
+              onChange={(e) => setEducationInfo({ ...educationInfo, qualification: e.target.value })}
+              className="px-2 py-1 rounded-lg outline-none w-full"
+            >
+              <option value="select">--select--</option>
+              <option value="Under Graduate">Under Graduate</option>
+              <option value="Post Graduate">Post Graduate</option>
+              <option value="Diploma">Diploma</option>
+            </select>
+          </div>
 
-            {/* University/Institute */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="university" className="text-sm font-medium">University/Institute</label>
+          {/* University */}
+          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <label htmlFor="university" className="text-sm font-medium">University/Institute</label>
+            <input
+              type="text"
+              id="university"
+              value={educationInfo.university}
+              onChange={(e) => setEducationInfo({ ...educationInfo, university: e.target.value })}
+              className="px-2 py-1 rounded-lg outline-none w-full"
+            />
+          </div>
+
+          {/* Year of Passing */}
+          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <label htmlFor="yearOfPassing" className="text-sm font-medium">Year of Passing</label>
+            <input
+              type="date"
+              id="yearOfPassing"
+              value={educationInfo.yearOfPassing}
+              onChange={(e) => setEducationInfo({ ...educationInfo, yearOfPassing: e.target.value })}
+              className="px-2 py-1 rounded-lg outline-none w-full"
+            />
+          </div>
+
+          {/* Certifications */}
+          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <label htmlFor="certifications" className="text-sm font-medium">Certifications</label>
+            <input
+              type="text"
+              id="certifications"
+              value={educationInfo.certifications}
+              onChange={(e) => setEducationInfo({ ...educationInfo, certifications: e.target.value })}
+              className="px-2 py-1 rounded-lg outline-none w-full"
+            />
+          </div>
+
+          {/* Tech Domain */}
+          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <label htmlFor="tech-domain" className="text-sm font-medium">Domain</label>
+            <select
+              id="tech-domain"
+              value={educationInfo.techDomain}
+              onChange={(e) => setEducationInfo({ ...educationInfo, techDomain: e.target.value })}
+              className="px-2 py-1 rounded-lg outline-none w-full"
+            >
+              <option value="select">--select--</option>
+              <option value="Software Engineering">Web Developer</option>
+              <option value="Full Stack Developer">Full Stack Developer</option>
+              <option value="Data Science">Content Writer</option>
+              <option value="Cloud Computing">UI/UX Designer</option>
+              <option value="Graphic Designer">Graphic Designer</option>
+              <option value="Business Development Manager">Business Development Manager</option>
+              <option value="HR">HR</option>
+            </select>
+          </div>
+
+          {/* Skills */}
+          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <label htmlFor="skills" className="text-sm font-medium">Skills</label>
+            <div className="flex items-center gap-2">
               <input
                 type="text"
-                id="university"
+                id="skills"
+                value={educationInfo.newSkill}
+                onChange={(e) => setEducationInfo({ ...educationInfo, newSkill: e.target.value })}
                 className="px-2 py-1 rounded-lg outline-none w-full"
+                placeholder="Type a skill and press Enter"
               />
-            </div>
-          </div>
-
-          {/* Second Row: Year of Passing, Certificates */}
-          <div className="flex flex-wrap gap-4">
-            {/* Year of Passing */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="yearOfPassing" className="text-sm font-medium">Year of Passing</label>
-              <input
-                type="date"
-                id="yearOfPassing"
-                className="px-2 py-1 rounded-lg outline-none w-full"
-              />
-            </div>
-
-            {/* Certificates */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="AdditionalCertificates" className="text-sm font-medium">Certifications</label>
-              <input
-                type="text"
-                id="AdditionalCertificates"
-                className="px-2 py-1 rounded-lg outline-none w-full"
-              />
-            </div>
-          </div>
-
-          {/* Tech Domain and Skills Input Section */}
-          <div className="flex flex-wrap gap-4">
-            {/* Tech Domain */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="tech-domain" className="text-sm font-medium">Domain</label>
-              <select
-                name="tech-domain"
-                id="tech-domain"
-                value={techDomain}
-                onChange={(e) => setTechDomain(e.target.value)}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+              <button
+                type="button"
+                onClick={handleAddSkill}
+                className="px-2 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600"
               >
-                <option value="select">--select--</option>
-                <option value="Software Engineering">Web Developer</option>
-                <option value="Software Engineering">Full Stack Developer</option>
-                <option value="Data Science">Content Writer</option>
-                <option value="Cloud Computing">UI/UX Designer</option>
-                <option value="Cloud Computing">Graphic Designer</option>
-                <option value="Artificial Intelligence">Business Development Manager</option>
-                <option value="Cybersecurity">HR</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            {/* Skills Input */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="skills" className="text-sm font-medium">Skills</label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  id="skills"
-                  value={newSkill}
-                  onChange={(e) => setNewSkill(e.target.value)}
-                  className="px-2 py-1 rounded-lg outline-none w-full"
-                  placeholder="Type a skill and press Enter"
-                />
-                <button
-                  type="button"
-                  onClick={handleAddSkill}
-                  className="px-2 py-1 bg-green-500 text-white rounded-lg hover:bg-green-600"
-                >
-                  Add
-                </button>
-              </div>
+                Add
+              </button>
             </div>
           </div>
 
-          {/* Displaying Added Skills in Four Columns */}
-          {skills.length > 0 && (
+          {/* Displaying Added Skills */}
+          {educationInfo.skills.length > 0 && (
             <div className="mt-4">
               <h4 className="text-lg font-semibold">Your Skills:</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                {skills.map((skill, index) => (
+                {educationInfo.skills.map((skill, index) => (
                   <div key={index} className="flex justify-between items-center bg-gray-100 p-2 rounded-lg">
                     <span>{skill}</span>
                     <button

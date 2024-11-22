@@ -10,12 +10,95 @@ import Office from './Components/OfficeUse';
 import { GiBank, GiBookshelf } from "react-icons/gi";
 import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import { MdHealthAndSafety, MdDocumentScanner } from "react-icons/md";
+import { useState } from 'react';
 import { FaFileSignature } from "react-icons/fa6";
 import { Route, Routes, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";  // Importing the autoTable plugin
 
 function App() {
+  const [personalInfo, setPersonalInfo] = useState({
+    First_Name: '',
+    Last_Name: '',
+    DOB: '',
+    Gender: '',
+    MaritalStatus: '',
+    Nationality: '',
+    Pan: '',
+    Aadhar: '',
+    Passport: '',
+    FatherName: '',
+    MotherName: '',
+    SpouseName: '',
+    DependentDetails: {
+      father: false,
+      mother: false,
+      wife: false,
+      children: 0
+    }
+  });
+
+  const [contactInfo, setContactInfo] = useState({
+    Permanent_Address: '',
+    Current_Address: '',
+    Mobile: '',
+    Alternate_No: '',
+    Email: ''
+  });
+
+  const [educationInfo, setEducationInfo] = useState({
+    qualification: '',
+    university: '',
+    yearOfPassing: '',
+    certifications: '',
+    techDomain: '',
+    skills: [],  // Array to hold skills
+    newSkill: '', // Current input value for skill
+  });
+
+  const [healthInfo, setHealthInfo] = useState({
+    bloodGroup: '',
+    allergies: '',
+    medicalConditions: '',
+    medicalInsurance: '',
+  });
+
+  const [bankInfo, setBankInfo] = useState({
+    bank: '',           
+    branch: '',        
+    accountno: '',     
+    IFSC: '',           
+    pan: '',            
+    taxregime: '',      
+    PF: '',             
+    esi: '',            
+    universal: '',      
+    gratuity: '',      
+  });
+
+  const [uploadDocsInfo, setUploadDocsInfo] = useState({
+    photo: false,
+    panCard: false,
+    resume: false,
+    voterId: false,
+    aadhaar: false,
+    educationalCertificates: false,
+    previousEmploymentCertificate: false,
+    passbook: false,
+    relievingLetter: false,
+    payslip: false,
+  });
+
+  const [declarationsInfo, setDeclarationsInfo] = useState({
+    nda: false,
+    employmentAgreement: false,
+    codeOfConduct: false,
+    companyPolicies: false,
+    conflictOfInterest: false,
+    antiBriberyPolicy: false,
+    dataProtectionAgreement: false,
+  });
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -51,42 +134,14 @@ function App() {
     const doc = new jsPDF();
     doc.setFontSize(12);
 
-    // Collect all form data
+    // Collect all form data directly from state
     const formData = {
-      personalInfo: {
-        name: document.getElementById("name")?.value || '',
-        dob: document.getElementById("dob")?.value || '',
-        gender: document.querySelector('input[name="gender"]:checked')?.value || '',
-        maritalStatus: document.querySelector('input[name="maritalStatus"]:checked')?.value || '',
-        nationality: document.getElementById("nationality")?.value || '',
-      },
-      contactInfo: {
-        phone: document.getElementById("phone")?.value || '',
-        email: document.getElementById("email")?.value || '',
-        address: document.getElementById("address")?.value || '',
-      },
-      educationInfo: {
-        highestQualification: document.getElementById("qualification")?.value || '',
-        college: document.getElementById("college")?.value || '',
-      },
-      healthInfo: {
-        medicalHistory: document.getElementById("medicalHistory")?.value || '',
-        allergies: document.getElementById("allergies")?.value || '',
-      },
-      bankInfo: {
-        bankName: document.getElementById("bank")?.value || '',
-        accountNumber: document.getElementById("accountno")?.value || '',
-        ifscCode: document.getElementById("IFSC")?.value || '',
-      },
-      declarations: {
-        nda: document.getElementById("nda")?.checked ? 'Yes' : 'No',
-        employmentAgreement: document.getElementById("employment-agreement")?.checked ? 'Yes' : 'No',
-        codeOfConduct: document.getElementById("code-of-conduct")?.checked ? 'Yes' : 'No',
-        companyPolicies: document.getElementById("company-policies")?.checked ? 'Yes' : 'No',
-        conflictOfInterest: document.getElementById("conflict-of-interest")?.checked ? 'Yes' : 'No',
-        antiBriberyPolicy: document.getElementById("anti-bribery-policy")?.checked ? 'Yes' : 'No',
-        dataProtectionAgreement: document.getElementById("data-protection-agreement")?.checked ? 'Yes' : 'No',
-      },
+      personalInfo: personalInfo,
+      contactInfo: contactInfo,
+      educationInfo: educationInfo,
+      healthInfo: healthInfo,
+      bankInfo: bankInfo,
+      declarations: declarationsInfo,
     };
 
     // Adding form data to PDF with autoTable
@@ -97,13 +152,19 @@ function App() {
     // Function to generate tables for each section
     const generateTable = (sectionTitle, sectionData) => {
       // Set the section title
-      doc.setFontSize(14);
+      doc.setFontSize(12);
       doc.text(sectionTitle, 10, y);
       y += 10;
 
       // Prepare the columns and rows for the table
       const columns = ['Field', 'Value'];
-      const rows = Object.entries(sectionData).map(([field, value]) => [field, value]);
+      const rows = Object.entries(sectionData).map(([field, value]) => {
+        // Flatten DependentDetails or nested objects
+        if (typeof value === 'object') {
+          value = JSON.stringify(value);
+        }
+        return [field, value];
+      });
 
       // Generate the table using autoTable
       doc.autoTable({
@@ -138,14 +199,14 @@ function App() {
         <h2 className='text-2xl text-center w-full font-bold underline my-10'>Employment Form</h2>
         <div className='max-w-[1200px] w-full mx-auto flex flex-col justify-center items-center'>
           <Routes>
-            <Route path='/' element={<Personal />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/education' element={<Education />} />
-            <Route path='/health' element={<Health />} />
-            <Route path='/bank' element={<Bank />} />
-            <Route path='/upload' element={<Upload />} />
+            <Route path='/' element={<Personal personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />} />
+            <Route path='/contact' element={<Contact contactInfo={contactInfo} setContactInfo={setContactInfo}/>} />
+            <Route path='/education' element={<Education educationInfo={educationInfo} setEducationInfo={setEducationInfo}/>} />
+            <Route path='/health' element={<Health healthInfo={healthInfo} setHealthInfo={setHealthInfo}/>} />
+            <Route path='/bank' element={<Bank bankInfo={bankInfo} setBankInfo={setBankInfo}/>} />
+            <Route path='/upload' element={<Upload uploadDocsInfo={uploadDocsInfo} setUploadDocsInfo={setUploadDocsInfo}/>} />
             <Route path='/office' element={<Office />} />
-            <Route path='/declarations' element={<Declarations />} />
+            <Route path='/declarations' element={<Declarations declarationsInfo={declarationsInfo} setDeclarationsInfo={setDeclarationsInfo}/>} />
           </Routes>
 
           {/* Navigation Buttons */}
