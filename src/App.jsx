@@ -4,7 +4,7 @@ import Personal from './Components/Personal';
 import Education from './Components/Education';
 import Health from './Components/Health';
 import Bank from './Components/Bank';
-import Upload from './Components/UploadDocs';
+import Upload from './Components/uploadDocs';
 import Declarations from './Components/Declarations';
 import Office from './Components/OfficeUse';
 import { GiBank, GiBookshelf } from "react-icons/gi";
@@ -34,8 +34,22 @@ function App() {
       father: false,
       mother: false,
       wife: false,
-      children: 0
+      children: "",
     }
+  });
+
+  const [employmentDetails, setEmploymentDetails] = useState({
+    empId: '',
+    department: '',
+    designation: '',
+    dateOfJoining: '',
+    workLocation: '',
+    reportingManager: '',
+    employmentType: 'full-time',
+    probationPeriod: '3',
+    noticePeriod: '45',
+    workHours: '',
+    jobDescription: '',
   });
 
   const [contactInfo, setContactInfo] = useState({
@@ -44,12 +58,12 @@ function App() {
     Mobile: '',
     Alternate_No: '',
     Email: '',
-    EmergencyContact: {
-      Name: "",
-      Relationship: "",
-      Mobile: "",
-      Address: "",
-    },
+    Linkedin:'',
+    Github:'',
+    Instagram:'',
+    Behance:'',
+    Portfolio:'',
+    Others:'',
   });
 
   const [educationInfo, setEducationInfo] = useState({
@@ -67,6 +81,12 @@ function App() {
     allergies: '',
     medicalConditions: '',
     medicalInsurance: '',
+    EmergencyContact: {
+      Name: '',
+      Relationship: '',
+      Mobile: '',
+      Address: '',
+    },
   });
 
   const [bankInfo, setBankInfo] = useState({
@@ -115,7 +135,6 @@ function App() {
     '/health',
     '/bank',
     '/upload',
-    '/office',
     '/declarations',
   ];
 
@@ -213,6 +232,7 @@ function App() {
             <Route path='/upload' element={<Upload uploadDocsInfo={uploadDocsInfo} setUploadDocsInfo={setUploadDocsInfo}/>} />
             <Route path='/office' element={<Office />} />
             <Route path='/declarations' element={<Declarations declarationsInfo={declarationsInfo} setDeclarationsInfo={setDeclarationsInfo}/>} />
+
           </Routes>
 
           {/* Navigation Buttons */}

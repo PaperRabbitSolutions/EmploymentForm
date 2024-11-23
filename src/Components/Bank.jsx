@@ -3,11 +3,20 @@ import React from 'react';
 function Bank({ bankInfo, setBankInfo }) {
   // Function to handle input change and update the state
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { id, value,type } = e.target;
+    if(type==='radio')
+    {
+      setBankInfo((prev)=>({
+        ...prev,
+        taxregime:value,
+      }))
+    }
+   else{
     setBankInfo((prevState) => ({
       ...prevState,
       [id]: value,  // Update the specific field by id
     }));
+   }
   };
 
   return (

@@ -35,7 +35,7 @@ function Education({ educationInfo, setEducationInfo }) {
     <>
       <div className="my-4 w-[80%] mx-auto">
         <h3 className="text-xl font-semibold my-4">Educational Background</h3>
-        <form className="space-y-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Qualification */}
           <div className="flex flex-col gap-1">
             <label htmlFor="qualification" className="text-sm font-medium">Highest Qualification</label>
@@ -78,7 +78,7 @@ function Education({ educationInfo, setEducationInfo }) {
 
           {/* Certifications */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="certifications" className="text-sm font-medium">Certifications</label>
+            <label htmlFor="certifications" className="text-sm font-medium">Certifications/Courses</label>
             <input
               type="text"
               id="certifications"

@@ -13,18 +13,28 @@ function Personal({ personalInfo, setPersonalInfo }) {
         },
       }));
 
-    } 
+    }
     else if (type === 'radio') {
-        setPersonalInfo((prev) => ({
-          ...prev,
-          Gender: value, // This will update the Gender field correctly
-        }));
-      }
+      setPersonalInfo((prev) => ({
+        ...prev,
+        Gender: value, // This will update the Gender field correctly
+      }));
+    }
     else if (type === 'select-one' || type === 'date') {
       setPersonalInfo((prev) => ({
         ...prev,
         [id]: value, // Update basic field values
       }));
+    } else if (type === 'number' && id === 'Children') {
+      const childrenValue = value ? parseInt(value, 10) : 0; // Convert empty string to 0
+      setPersonalInfo((prev) => ({
+        ...prev,
+        DependentDetails: {
+          ...prev.DependentDetails,
+          children: childrenValue, // Update children field with number
+        },
+      }));
+
     } else {
       setPersonalInfo((prev) => ({
         ...prev,
@@ -36,7 +46,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
   return (
     <>
       <div className="w-[80%] mx-auto">
-        <h2 className="text-xl ml-14 text-left font-semibold underline py-6">Personal Details:</h2>
+        <h2 className="text-xl text-left font-semibold underline py-6">Personal Details:</h2>
         <form className="space-y-2 mx-auto">
           {/* First Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -254,7 +264,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
                   <input
                     type="number"
                     id="Children"
-                    className="w-12 rounded-lg outline-none"
+                    className=" rounded-lg outline-none px-1 text-center"
                     min="1"
                     max="5"
                     value={personalInfo.DependentDetails.children || ""}

@@ -3,22 +3,11 @@ import React from 'react';
 function Contact({ contactInfo, setContactInfo }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // Check if the change is for Emergency Contact info
-    if (name in contactInfo.EmergencyContact) {
-      setContactInfo((prevState) => ({
-        ...prevState,
-        EmergencyContact: {
-          ...prevState.EmergencyContact,
-          [name]: value, // Update only the relevant field
-        },
-      }));
-    } else {
-      setContactInfo((prevState) => ({
-        ...prevState,
-        [name]: value, // Update regular contact info
-      }));
-    }
+    
+    setContactInfo((prevState) => ({
+      ...prevState,
+      [name]: value, // Update regular contact info
+    }));
   };
 
   return (
@@ -57,7 +46,7 @@ function Contact({ contactInfo, setContactInfo }) {
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
               <label htmlFor="mobile" className="text-sm font-medium">Mobile No.</label>
               <input
-                type="number"
+                type="text"  // Use text to avoid issues with numeric input
                 id="mobile"
                 name="Mobile"
                 value={contactInfo.Mobile}
@@ -68,7 +57,7 @@ function Contact({ contactInfo, setContactInfo }) {
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
               <label htmlFor="alternate" className="text-sm font-medium">Alternate No.</label>
               <input
-                type="number"
+                type="text"  // Use text for alternate numbers as well
                 id="alternate"
                 name="Alternate_No"
                 value={contactInfo.Alternate_No}
@@ -89,62 +78,82 @@ function Contact({ contactInfo, setContactInfo }) {
               />
             </div>
           </div>
-        </form>
-      </div>
 
-      {/* Emergency Contact Details Section */}
-      <div className="my-4 w-[80%] mx-auto">
-        <h2 className="font-semibold underline my-4">Emergency Contact Details:</h2>
-        <form className="space-y-2">
-          {/* Name and Relationship on the same line */}
-          <div className="flex flex-wrap gap-6">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="name" className="text-sm font-medium">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="Name"
-                value={contactInfo.EmergencyContact.Name}
-                onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
-              />
-            </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="relation" className="text-sm font-medium">Relationship</label>
-              <input
-                type="text"
-                id="relation"
-                name="Relationship"
-                value={contactInfo.EmergencyContact.Relationship}
-                onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
-              />
-            </div>
-          </div>
+          {/* social media */}
+          <div className='space-y-2'>
+            <h3 className='mt-10 mb-4 underline text-lg font-semibold'>Handles</h3>
+            <div className="flex flex-wrap gap-6">
+              <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                <label htmlFor="linkedin" className="text-sm font-medium">LinkedIn</label>
+                <input
+                  type="text"
+                  id="linkedin"
+                  name="Linkedin"
+                  value={contactInfo.Linkedin}
+                  onChange={handleChange}
+                  className="px-2 py-1 w-full rounded-lg outline-none"
+                />
+              </div>
+              <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                <label htmlFor="github" className="text-sm font-medium">Github</label>
+                <input
+                  type="text"
+                  id="github"
+                  name="Github"
+                  value={contactInfo.Github}
+                  onChange={handleChange}
+                  className="px-2 py-1 w-full rounded-lg outline-none"
+                />
+              </div>
 
-          {/* Mobile and Address on the same line */}
-          <div className="flex flex-wrap gap-6">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="mobile" className="text-sm font-medium">Mobile No.</label>
-              <input
-                type="number"
-                id="mobile"
-                name="Mobile"
-                value={contactInfo.EmergencyContact.Mobile}
-                onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
-              />
+              <div className="flex-1 flex min-w-[200px] flex-col gap-1">
+                <label htmlFor="instagram" className="text-sm font-medium">Instagram</label>
+                <input
+                  type="text"
+                  id="instagram"
+                  name="Instagram"
+                  value={contactInfo.Instagram}
+                  onChange={handleChange}
+                  className="px-2 py-1 w-full rounded-lg outline-none"
+                />
+              </div>
             </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="address" className="text-sm font-medium">Address</label>
-              <input
-                type="text"
-                id="address"
-                name="Address"
-                value={contactInfo.EmergencyContact.Address}
-                onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
-              />
+
+            <div className="flex flex-wrap gap-6">
+              <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                <label htmlFor="behance" className="text-sm font-medium">Behance</label>
+                <input
+                  type="text"
+                  id="behance"
+                  name="Behance"
+                  value={contactInfo.Behance}
+                  onChange={handleChange}
+                  className="px-2 py-1 w-full rounded-lg outline-none"
+                />
+              </div>
+              <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+                <label htmlFor="portfolio" className="text-sm font-medium">Portfolio</label>
+                <input
+                  type="text"
+                  id="portfolio"
+                  name="Portfolio"
+                  value={contactInfo.Portfolio}
+                  onChange={handleChange}
+                  className="px-2 py-1 w-full rounded-lg outline-none"
+                />
+              </div>
+
+              <div className="flex-1 flex min-w-[200px] flex-col gap-1">
+                <label htmlFor="others" className="text-sm font-medium">Others</label>
+                <input
+                  type="text"
+                  id="others"
+                  name="Others"
+                  value={contactInfo.Others}
+                  onChange={handleChange}
+                  className="px-2 py-1 w-full rounded-lg outline-none"
+                />
+              </div>
             </div>
           </div>
         </form>

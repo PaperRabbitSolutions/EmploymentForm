@@ -3,12 +3,15 @@ import React from 'react';
 function Declarations({ declarationsInfo, setDeclarationsInfo }) {
   const handleCheckboxChange = (e) => {
     const { id, checked } = e.target;
-    
-    setDeclarationsInfo({
-      ...declarationsInfo,
-      [id]: checked,
-    });
+  
+
+    setDeclarationsInfo((prevState) => ({
+      ...prevState,
+      [id]: checked, // Update the specific checkbox state
+    }));
   };
+  
+  
 
   return (
     <>
@@ -28,56 +31,56 @@ function Declarations({ declarationsInfo, setDeclarationsInfo }) {
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                id="employment-agreement"
+                id="employmentAgreement"
                 checked={declarationsInfo.employmentAgreement}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="employment-agreement">Employment Agreement</label>
+              <label htmlFor="employmentAgreement">Employment Agreement</label>
             </div>
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                id="code-of-conduct"
+                id="codeOfConduct"
                 checked={declarationsInfo.codeOfConduct}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="code-of-conduct">Code Of Conduct</label>
+              <label htmlFor="codeOfConduct">Code Of Conduct</label>
             </div>
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                id="company-policies"
+                id="companyPolicies"
                 checked={declarationsInfo.companyPolicies}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="company-policies">Company Policies</label>
+              <label htmlFor="companyPolicies">Company Policies</label>
             </div>
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                id="conflict-of-interest"
+                id="conflictOfInterest"
                 checked={declarationsInfo.conflictOfInterest}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="conflict-of-interest">Conflict of Interest</label>
+              <label htmlFor="conflictOfInterest">Conflict of Interest</label>
             </div>
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                id="anti-bribery-policy"
+                id="antiBriberyPolicy"
                 checked={declarationsInfo.antiBriberyPolicy}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="anti-bribery-policy">Anti-Bribery Policy</label>
+              <label htmlFor="antiBriberyPolicy">Anti-Bribery Policy</label>
             </div>
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                id="data-protection-agreement"
+                id="dataProtectionAgreement"
                 checked={declarationsInfo.dataProtectionAgreement}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="data-protection-agreement">Data Protection Agreement</label>
+              <label htmlFor="dataProtectionAgreement">Data Protection Agreement</label>
             </div>
           </div>
         </form>
