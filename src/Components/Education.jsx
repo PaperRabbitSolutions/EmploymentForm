@@ -43,7 +43,7 @@ function Education({ educationInfo, setEducationInfo }) {
               id="qualification"
               value={educationInfo.qualification}
               onChange={(e) => setEducationInfo({ ...educationInfo, qualification: e.target.value })}
-              className="px-2 py-1 rounded-lg outline-none w-full"
+              className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
             >
               <option value="select">--select--</option>
               <option value="Under Graduate">Under Graduate</option>
@@ -60,7 +60,7 @@ function Education({ educationInfo, setEducationInfo }) {
               id="university"
               value={educationInfo.university}
               onChange={(e) => setEducationInfo({ ...educationInfo, university: e.target.value })}
-              className="px-2 py-1 rounded-lg outline-none w-full"
+              className="px-2 py-1 border-[1px] rounded-lg outline-none w-full"
             />
           </div>
 
@@ -72,7 +72,7 @@ function Education({ educationInfo, setEducationInfo }) {
               id="yearOfPassing"
               value={educationInfo.yearOfPassing}
               onChange={(e) => setEducationInfo({ ...educationInfo, yearOfPassing: e.target.value })}
-              className="px-2 py-1 rounded-lg outline-none w-full"
+              className="px-2 py-1 border-[1px] rounded-lg outline-none w-full"
             />
           </div>
 
@@ -84,7 +84,7 @@ function Education({ educationInfo, setEducationInfo }) {
               id="certifications"
               value={educationInfo.certifications}
               onChange={(e) => setEducationInfo({ ...educationInfo, certifications: e.target.value })}
-              className="px-2 py-1 rounded-lg outline-none w-full"
+              className="px-2 py-1 border-[1px] rounded-lg outline-none w-full"
             />
           </div>
 
@@ -97,7 +97,7 @@ function Education({ educationInfo, setEducationInfo }) {
                 id="tech-domain"
                 value={educationInfo.techDomain}
                 onChange={(e) => setEducationInfo({ ...educationInfo, techDomain: e.target.value })}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               >
                 <option value="select">--select--</option>
                 <option value="Software Engineering">Web Developer</option>
@@ -119,7 +119,7 @@ function Education({ educationInfo, setEducationInfo }) {
                   id="skills"
                   value={educationInfo.newSkill}
                   onChange={(e) => setEducationInfo({ ...educationInfo, newSkill: e.target.value })}
-                  className="px-2 py-1 rounded-lg outline-none w-full"
+                  className="px-2 py-1 border-[1px] rounded-lg outline-none w-full"
                   placeholder="Type a skill and press Enter"
                 />
                 <button

@@ -108,8 +108,8 @@ function UploadDocs({ uploadDocsInfo, setUploadDocsInfo }) {
               </div>
             </div>
             <p className="text-sm w-full text-slate-700">
-              ** Note: All the documents mentioned here should be sent to the office{' '}
-              <a href="">email-id</a>
+              ** Note: All the documents mentioned here should be sent to the official 
+              <a href="mailto:hr@paperrabbit.world" className="text-blue-700"> email-id</a>
             </p>
           </form>
         </div>

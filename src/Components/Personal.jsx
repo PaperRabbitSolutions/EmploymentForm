@@ -45,7 +45,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
 
   return (
     <>
-      <div className="w-[80%] mx-auto">
+      <div className="w-[80%] rounded-lg mx-auto">
         <h2 className="text-xl text-left font-semibold underline py-6">Personal Details:</h2>
         <form className="space-y-2 mx-auto">
           {/* First Row */}
@@ -55,7 +55,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="text"
                 id="First_Name"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full required"
                 value={personalInfo.First_Name}
                 onChange={handleChange}
               />
@@ -65,7 +65,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="text"
                 id="Last_Name"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.Last_Name}
                 onChange={handleChange}
               />
@@ -80,7 +80,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="date"
                 id="DOB"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.DOB}
                 onChange={handleChange}
               />
@@ -120,7 +120,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <label htmlFor="MaritalStatus" className="text-sm font-medium">Marital Status</label>
               <select
                 id="MaritalStatus"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.MaritalStatus}
                 onChange={handleChange}
               >
@@ -139,7 +139,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <label htmlFor="Nationality" className="text-sm font-medium">Nationality</label>
               <select
                 id="Nationality"
-                className="px-2 py-1 rounded-lg w-full"
+                className="px-2 py-1 border-[1px] rounded-lg w-full"
                 value={personalInfo.Nationality}
                 onChange={handleChange}
               >
@@ -156,7 +156,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="text"
                 id="Pan"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.Pan}
                 onChange={handleChange}
               />
@@ -170,7 +170,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="text"
                 id="Aadhar"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.Aadhar}
                 onChange={handleChange}
               />
@@ -181,7 +181,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="text"
                 id="Passport"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.Passport}
                 onChange={handleChange}
               />
@@ -195,7 +195,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="text"
                 id="FatherName"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.FatherName}
                 onChange={handleChange}
               />
@@ -206,7 +206,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               <input
                 type="text"
                 id="MotherName"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.MotherName}
                 onChange={handleChange}
               />
@@ -214,13 +214,13 @@ function Personal({ personalInfo, setPersonalInfo }) {
           </div>
 
           {/* Sixth Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
             <div className="flex flex-col gap-1">
               <label htmlFor="SpouseName" className="text-sm font-medium">Spouse's Name</label>
               <input
                 type="text"
                 id="SpouseName"
-                className="px-2 py-1 outline-none rounded-lg w-full"
+                className="px-2 py-1 outline-none border-[1px] rounded-lg w-full"
                 value={personalInfo.SpouseName}
                 onChange={handleChange}
               />
@@ -264,7 +264,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
                   <input
                     type="number"
                     id="Children"
-                    className=" rounded-lg outline-none px-1 text-center"
+                    className=" rounded-lg border-[1px] outline-none px-1 text-center"
                     min="1"
                     max="5"
                     value={personalInfo.DependentDetails.children || ""}

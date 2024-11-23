@@ -36,7 +36,7 @@ function Health({ healthInfo, setHealthInfo }) {
                 id="bloodGroup"  // Ensure the id matches the property in state
                 value={healthInfo.bloodGroup || ''}
                 onChange={handleHealthChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -46,7 +46,7 @@ function Health({ healthInfo, setHealthInfo }) {
                 id="allergies"
                 value={healthInfo.allergies || ''}
                 onChange={handleHealthChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
           </div>
@@ -60,7 +60,7 @@ function Health({ healthInfo, setHealthInfo }) {
                 id="medicalConditions"
                 value={healthInfo.medicalConditions || ''}
                 onChange={handleHealthChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -70,7 +70,7 @@ function Health({ healthInfo, setHealthInfo }) {
                 id="medicalInsurance"
                 value={healthInfo.medicalInsurance || ''}
                 onChange={handleHealthChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
           </div>
@@ -84,13 +84,13 @@ function Health({ healthInfo, setHealthInfo }) {
           {/* Name and Relationship on the same line */}
           <div className="flex flex-wrap gap-6">
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-              <label htmlFor="Name" className="text-sm font-medium">Name</label>
+              <label htmlFor="Name" className="text-sm  font-medium">Name</label>
               <input
                 type="text"
                 id="Name"  // Ensure this matches the state property name
                 value={healthInfo.EmergencyContact.Name || ''}
                 onChange={handleEmergencyContactChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -100,7 +100,7 @@ function Health({ healthInfo, setHealthInfo }) {
                 id="Relationship"  // Ensure this matches the state property name
                 value={healthInfo.EmergencyContact.Relationship || ''}
                 onChange={handleEmergencyContactChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
           </div>
@@ -114,7 +114,7 @@ function Health({ healthInfo, setHealthInfo }) {
                 id="Mobile"  // Ensure this matches the state property name
                 value={healthInfo.EmergencyContact.Mobile || ''}
                 onChange={handleEmergencyContactChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg  border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -124,7 +124,7 @@ function Health({ healthInfo, setHealthInfo }) {
                 id="Address"  // Ensure this matches the state property name
                 value={healthInfo.EmergencyContact.Address || ''}
                 onChange={handleEmergencyContactChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
           </div>

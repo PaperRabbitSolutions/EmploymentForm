@@ -34,7 +34,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="bank"
                 value={bankInfo.bank || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -44,7 +44,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="branch"
                 value={bankInfo.branch || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
           </div>
@@ -58,7 +58,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="accountno"
                 value={bankInfo.accountno || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -68,7 +68,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="IFSC"
                 value={bankInfo.IFSC || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg  border-[1px] outline-none w-full"
                 required
               />
             </div>
@@ -83,7 +83,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="pan"
                 value={bankInfo.pan || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -96,7 +96,7 @@ function Bank({ bankInfo, setBankInfo }) {
                   value="old"
                   checked={bankInfo.taxregime === 'old'}  // Update the checked property to reflect state
                   onChange={handleChange}
-                  className="w-auto"
+                  className="w-auto "
                 />
                 <label htmlFor="old" className="text-sm">Old</label>
                 <input
@@ -122,7 +122,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="PF"
                 value={bankInfo.PF || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -132,7 +132,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="esi"
                 value={bankInfo.esi || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
           </div>
@@ -146,7 +146,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="universal"
                 value={bankInfo.universal || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -156,7 +156,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 id="gratuity"
                 value={bankInfo.gratuity || ''}
                 onChange={handleChange}
-                className="px-2 py-1 rounded-lg outline-none w-full"
+                className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
           </div>

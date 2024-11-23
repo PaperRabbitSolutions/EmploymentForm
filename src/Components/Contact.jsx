@@ -16,7 +16,8 @@ function Contact({ contactInfo, setContactInfo }) {
         <h2 className="font-semibold text-xl my-4 underline">Contact Details:</h2>
         <form className="space-y-2">
           {/* Permanent Address in its own row */}
-          <div className="flex flex-col gap-1">
+         <div className='flex flex-wrap gap-6'>
+         <div className="flex-1 min-w-[200px] flex flex-col gap-1">
             <label htmlFor="permanent" className="text-sm font-medium">Permanent Address</label>
             <input
               type="text"
@@ -24,12 +25,12 @@ function Contact({ contactInfo, setContactInfo }) {
               name="Permanent_Address"
               value={contactInfo.Permanent_Address}
               onChange={handleChange}
-              className="px-2 py-1 w-full rounded-lg outline-none"
+              className="px-2 py-1 w-full rounded-lg border-[1px] outline-none"
             />
           </div>
 
           {/* Alternate Address in its own row */}
-          <div className="flex flex-col gap-1">
+          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
             <label htmlFor="current" className="text-sm font-medium">Alternate Address</label>
             <input
               type="text"
@@ -37,9 +38,10 @@ function Contact({ contactInfo, setContactInfo }) {
               name="Current_Address"
               value={contactInfo.Current_Address}
               onChange={handleChange}
-              className="px-2 py-1 w-full rounded-lg outline-none"
+              className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
             />
           </div>
+         </div>
 
           {/* Mobile and Alternate Numbers on the same line */}
           <div className="flex flex-wrap gap-6">
@@ -51,7 +53,7 @@ function Contact({ contactInfo, setContactInfo }) {
                 name="Mobile"
                 value={contactInfo.Mobile}
                 onChange={handleChange}
-                className="px-2 py-1 w-full rounded-lg outline-none"
+                className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
               />
             </div>
             <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -62,7 +64,7 @@ function Contact({ contactInfo, setContactInfo }) {
                 name="Alternate_No"
                 value={contactInfo.Alternate_No}
                 onChange={handleChange}
-                className="px-2 py-1 w-full rounded-lg outline-none"
+                className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
               />
             </div>
 
@@ -74,14 +76,14 @@ function Contact({ contactInfo, setContactInfo }) {
                 name="Email"
                 value={contactInfo.Email}
                 onChange={handleChange}
-                className="px-2 py-1 w-full rounded-lg outline-none"
+                className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
               />
             </div>
           </div>
 
           {/* social media */}
           <div className='space-y-2'>
-            <h3 className='mt-10 mb-4 underline text-lg font-semibold'>Handles</h3>
+            <h3 className='mt-6 mb-4 underline text-lg font-semibold'>Handles</h3>
             <div className="flex flex-wrap gap-6">
               <div className="flex-1 min-w-[200px] flex flex-col gap-1">
                 <label htmlFor="linkedin" className="text-sm font-medium">LinkedIn</label>
@@ -91,7 +93,7 @@ function Contact({ contactInfo, setContactInfo }) {
                   name="Linkedin"
                   value={contactInfo.Linkedin}
                   onChange={handleChange}
-                  className="px-2 py-1 w-full rounded-lg outline-none"
+                  className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
                 />
               </div>
               <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -102,7 +104,7 @@ function Contact({ contactInfo, setContactInfo }) {
                   name="Github"
                   value={contactInfo.Github}
                   onChange={handleChange}
-                  className="px-2 py-1 w-full rounded-lg outline-none"
+                  className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
                 />
               </div>
 
@@ -114,21 +116,21 @@ function Contact({ contactInfo, setContactInfo }) {
                   name="Instagram"
                   value={contactInfo.Instagram}
                   onChange={handleChange}
-                  className="px-2 py-1 w-full rounded-lg outline-none"
+                  className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
                 />
               </div>
             </div>
 
             <div className="flex flex-wrap gap-6">
               <div className="flex-1 min-w-[200px] flex flex-col gap-1">
-                <label htmlFor="behance" className="text-sm font-medium">Behance</label>
+                <label htmlFor="behance" className="text-sm  font-medium">Behance</label>
                 <input
                   type="text"
                   id="behance"
                   name="Behance"
                   value={contactInfo.Behance}
                   onChange={handleChange}
-                  className="px-2 py-1 w-full rounded-lg outline-none"
+                  className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
                 />
               </div>
               <div className="flex-1 min-w-[200px] flex flex-col gap-1">
@@ -139,7 +141,7 @@ function Contact({ contactInfo, setContactInfo }) {
                   name="Portfolio"
                   value={contactInfo.Portfolio}
                   onChange={handleChange}
-                  className="px-2 py-1 w-full rounded-lg outline-none"
+                  className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
                 />
               </div>
 
@@ -151,7 +153,7 @@ function Contact({ contactInfo, setContactInfo }) {
                   name="Others"
                   value={contactInfo.Others}
                   onChange={handleChange}
-                  className="px-2 py-1 w-full rounded-lg outline-none"
+                  className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
                 />
               </div>
             </div>

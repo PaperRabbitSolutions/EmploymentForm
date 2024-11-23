@@ -73,7 +73,6 @@ function App() {
     certifications: '',
     techDomain: '',
     skills: [], 
-    newSkill: '',
   });
 
   const [healthInfo, setHealthInfo] = useState({
@@ -166,7 +165,9 @@ function App() {
       educationInfo: educationInfo,
       healthInfo: healthInfo,
       bankInfo: bankInfo,
+      uploadDocsInfo: uploadDocsInfo,
       declarations: declarationsInfo,
+      employmentDetails: employmentDetails,
     };
 
     // Adding form data to PDF with autoTable
@@ -176,138 +177,166 @@ function App() {
 
     // Function to generate tables for each section
     const generateTable = (sectionTitle, sectionData) => {
-      // Set the section title
       doc.setFontSize(12);
+      doc.setFont('helvetica', 'bold');
       doc.text(sectionTitle, 10, y);
       y += 10;
-
-      // Prepare the columns and rows for the table
+    
       const columns = ['Field', 'Value'];
       const rows = Object.entries(sectionData).map(([field, value]) => {
-        // Flatten DependentDetails or nested objects
-        if (typeof value === 'object') {
-          value = JSON.stringify(value);
+        // Check for boolean values and convert them to Yes/No
+        if (typeof value === 'boolean') {
+          value = value ? 'Yes' : 'No';
+        } else if (typeof value === 'object') {
+          value = JSON.stringify(value); // If the value is an object, stringify it
         }
         return [field, value];
       });
-
-      // Generate the table using autoTable
+    
       doc.autoTable({
         startY: y,
         head: [columns],
         body: rows,
         theme: 'striped',
-        headStyles: { fillColor: [0, 0, 255], textColor: [255, 255, 255] },
-        bodyStyles: { fillColor: [240, 240, 240], textColor: [0, 0, 0] },
-        margin: { top: 10, left: 10, right: 10 },
+        headStyles: {
+          fillColor: [0, 56, 104], // Dark Blue for header
+          textColor: [255, 255, 255], // White text
+          fontSize: 12,
+          font: 'helvetica', // Font style for header
+          fontStyle: 'bold', // Bold header text
+          halign: 'center', // Header alignment
+          valign: 'middle', // Center vertically
+        },
+        bodyStyles: {
+          fillColor: [240, 240, 240], // Light gray for body rows
+          textColor: [0, 0, 0], // Black text
+          fontSize: 10,
+          font: 'helvetica', // Font style for body rows
+          halign: 'left', // Align text to the left
+          valign: 'middle', // Center vertically
+          lineWidth: 0.3, // Cell border thickness
+          lineColor: [150, 150, 150], // Light gray borders
+        },
+        alternateRowStyles: {
+          fillColor: [255, 255, 255], // White for alternate rows
+        },
+        margin: { top: 10, left: 10, right: 10 }, // Add margins for spacing
+        styles: {
+          cellPadding: 5, // Increase padding inside cells for better readability
+          overflow: 'linebreak', // Handle overflow text
+          fontSize: 11, // Slightly smaller font for body rows
+        },
+        columnStyles: {
+          0: { cellWidth: '30%' }, // First column (Field) takes 30% width
+          1: { cellWidth: '70%' }, // Second column (Value) takes 70% width
+        },
       });
-
-      // Update the Y position after the table for the next section
+    
       y = doc.lastAutoTable.finalY + 10;
     };
+    
 
-    // Generate tables for all sections
     generateTable('Personal Information', formData.personalInfo);
     generateTable('Contact Information', formData.contactInfo);
     generateTable('Education Information', formData.educationInfo);
     generateTable('Health Information', formData.healthInfo);
     generateTable('Bank Information', formData.bankInfo);
+    generateTable('Documents', formData.uploadDocsInfo); // Now this works
     generateTable('Declarations', formData.declarations);
+    generateTable('Employee Details', formData.employmentDetails);
 
-    // Save the PDF
     doc.save("employment_form.pdf");
   };
 
   return (
-    <>
-      <div className='flex flex-col w-full min-h-screen py-10 bg-blue-100'>
-        <h2 className='text-2xl text-center w-full font-bold underline my-10'>Employment Form</h2>
-        <div className='max-w-[1200px] w-full mx-auto flex flex-col justify-center items-center'>
-          <Routes>
-            <Route path='/' element={<Personal personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />} />
-            <Route path='/contact' element={<Contact contactInfo={contactInfo} setContactInfo={setContactInfo}/>} />
-            <Route path='/education' element={<Education educationInfo={educationInfo} setEducationInfo={setEducationInfo}/>} />
-            <Route path='/health' element={<Health healthInfo={healthInfo} setHealthInfo={setHealthInfo}/>} />
-            <Route path='/bank' element={<Bank bankInfo={bankInfo} setBankInfo={setBankInfo}/>} />
-            <Route path='/upload' element={<Upload uploadDocsInfo={uploadDocsInfo} setUploadDocsInfo={setUploadDocsInfo}/>} />
-            <Route path='/office' element={<Office />} />
-            <Route path='/declarations' element={<Declarations declarationsInfo={declarationsInfo} setDeclarationsInfo={setDeclarationsInfo}/>} />
+    <div className='flex flex-col w-full min-h-screen py-10 '>
+      <h2 className='text-2xl text-center w-full font-bold underline my-10'>Employment Form</h2>
+      <div className='max-w-[1200px] w-full mx-auto flex flex-col justify-center items-center'>
+        <Routes>
+          <Route path='/' element={<Personal personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />} />
+          <Route path='/contact' element={<Contact contactInfo={contactInfo} setContactInfo={setContactInfo}/>} />
+          <Route path='/education' element={<Education educationInfo={educationInfo} setEducationInfo={setEducationInfo}/>} />
+          <Route path='/health' element={<Health healthInfo={healthInfo} setHealthInfo={setHealthInfo}/>} />
+          <Route path='/bank' element={<Bank bankInfo={bankInfo} setBankInfo={setBankInfo}/>} />
+          <Route path='/upload' element={<Upload uploadDocsInfo={uploadDocsInfo} setUploadDocsInfo={setUploadDocsInfo}/>} />
+          <Route path='/office' element={<Office />} />
+          <Route path='/declarations' element={<Declarations declarationsInfo={declarationsInfo} setDeclarationsInfo={setDeclarationsInfo}/>} />
+        </Routes>
 
-          </Routes>
-
-          {/* Navigation Buttons */}
-          <div className="flex items-center justify-between w-[80%] md:w-[70%] lg:w-[60%] mt-4 gap-4">
+        {/* Navigation Buttons */}
+        <div className="flex items-center justify-between w-[80%] md:w-[70%] lg:w-[60%] mt-4 gap-4">
+          {/* Hide "Previous" button on the first page */}
+          {currentIndex > 0 && (
             <button
               onClick={goToPrevious}
               className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
-              disabled={currentIndex === 0}
             >
               Previous
             </button>
+          )}
 
-            {isLastPage ? (
-              <button
-                onClick={generatePDF} // Call the generatePDF function
-                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-              >
-                Submit
-              </button>
-            ) : (
-              <button
-                onClick={goToNext}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-              >
-                Next
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Sidebar with icons */}
-        <div className='absolute top-1/4 right-[4%] md:right-[4%] lg:right-[8%] flex flex-col gap-10 text-slate-600'>
-          <span className='text-base md:text-xl lg:text-3xl'>
-            <NavLink to="/">
-              <FaUser />
-            </NavLink>
-          </span>
-          <span className='text-base md:text-xl lg:text-3xl'>
-            <NavLink to="/contact">
-              <FaPhoneAlt />
-            </NavLink>
-          </span>
-
-          <span className='text-base md:text-xl lg:text-3xl'>
-            <NavLink to="/education">
-              <GiBookshelf />
-            </NavLink>
-          </span>
-
-          <span className='text-base md:text-xl lg:text-3xl'>
-            <NavLink to="/health">
-              <MdHealthAndSafety />
-            </NavLink>
-          </span>
-
-          <span className='text-base md:text-xl lg:text-3xl'>
-            <NavLink to="/bank">
-              <GiBank />
-            </NavLink>
-          </span>
-
-          <span className='text-base md:text-xl lg:text-3xl'>
-            <NavLink to="/upload">
-              <MdDocumentScanner />
-            </NavLink>
-          </span>
-
-          <span className='text-base md:text-xl lg:text-3xl'>
-            <NavLink to="/declarations">
-              <FaFileSignature />
-            </NavLink>
-          </span>
+          {isLastPage ? (
+            <button
+              onClick={generatePDF} // Call the generatePDF function
+              className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+            >
+              Submit
+            </button>
+          ) : (
+            <button
+              onClick={goToNext}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            >
+              Next
+            </button>
+          )}
         </div>
       </div>
-    </>
+
+      {/* Sidebar with icons */}
+      <div className='absolute top-1/4 right-[4%] md:right-[4%] lg:right-[8%] flex flex-col gap-10 text-slate-600'>
+        <span className='text-base md:text-xl lg:text-3xl'>
+          <NavLink to="/">
+            <FaUser />
+          </NavLink>
+        </span>
+        <span className='text-base md:text-xl lg:text-3xl'>
+          <NavLink to="/contact">
+            <FaPhoneAlt />
+          </NavLink>
+        </span>
+
+        <span className='text-base md:text-xl lg:text-3xl'>
+          <NavLink to="/education">
+            <GiBookshelf />
+          </NavLink>
+        </span>
+
+        <span className='text-base md:text-xl lg:text-3xl'>
+          <NavLink to="/health">
+            <MdHealthAndSafety />
+          </NavLink>
+        </span>
+
+        <span className='text-base md:text-xl lg:text-3xl'>
+          <NavLink to="/bank">
+            <GiBank />
+          </NavLink>
+        </span>
+
+        <span className='text-base md:text-xl lg:text-3xl'>
+          <NavLink to="/upload">
+            <MdDocumentScanner />
+          </NavLink>
+        </span>
+
+        <span className='text-base md:text-xl lg:text-3xl'>
+          <NavLink to="/declarations">
+            <FaFileSignature />
+          </NavLink>
+        </span>
+      </div>
+    </div>
   );
 }
 
