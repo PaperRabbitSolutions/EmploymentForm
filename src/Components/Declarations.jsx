@@ -16,9 +16,9 @@ function Declarations({ declarationsInfo, setDeclarationsInfo }) {
   return (
     <>
       <div className="my-4 w-[80%] mx-auto">
-        <h2 className="text-xl font-semibold my-4">Declarations</h2>
+        <h2 className="text-xl font-semibold my-4 underline">Declarations</h2>
         <form action="" className="space-y-2">
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-16">
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"

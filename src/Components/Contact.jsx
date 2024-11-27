@@ -19,14 +19,11 @@ function Contact({ contactInfo, setContactInfo }) {
          <div className='flex flex-wrap gap-6'>
          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
             <label htmlFor="permanent" className="text-sm font-medium">Permanent Address</label>
-            <input
-              type="text"
-              id="permanent"
+            <textarea id="permanent"
               name="Permanent_Address"
               value={contactInfo.Permanent_Address}
               onChange={handleChange}
-              className="px-2 py-1 w-full rounded-lg border-[1px] outline-none"
-            />
+              className="px-2 py-1 w-full rounded-lg border-[1px] outline-none"></textarea>
           </div>
 
           {/* Alternate Address in its own row */}

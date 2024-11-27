@@ -8,6 +8,7 @@ import Upload from './Components/uploadDocs';
 import Declarations from './Components/Declarations';
 import Office from './Components/OfficeUse';
 import { GiBank, GiBookshelf } from "react-icons/gi";
+import logo from '../src/assets/Logo.svg'
 import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import { MdHealthAndSafety, MdDocumentScanner } from "react-icons/md";
 import { useState } from 'react';
@@ -58,12 +59,12 @@ function App() {
     Mobile: '',
     Alternate_No: '',
     Email: '',
-    Linkedin:'',
-    Github:'',
-    Instagram:'',
-    Behance:'',
-    Portfolio:'',
-    Others:'',
+    Linkedin: '',
+    Github: '',
+    Instagram: '',
+    Behance: '',
+    Portfolio: '',
+    Others: '',
   });
 
   const [educationInfo, setEducationInfo] = useState({
@@ -72,7 +73,7 @@ function App() {
     yearOfPassing: '',
     certifications: '',
     techDomain: '',
-    skills: [], 
+    skills: [],
   });
 
   const [healthInfo, setHealthInfo] = useState({
@@ -89,16 +90,16 @@ function App() {
   });
 
   const [bankInfo, setBankInfo] = useState({
-    bank: '',           
-    branch: '',        
-    accountno: '',     
-    IFSC: '',           
-    pan: '',            
-    taxregime: '',      
-    PF: '',             
-    esi: '',            
-    universal: '',      
-    gratuity: '',      
+    bank: '',
+    branch: '',
+    accountno: '',
+    IFSC: '',
+    pan: '',
+    taxregime: '',
+    PF: '',
+    esi: '',
+    universal: '',
+    gratuity: '',
   });
 
   const [uploadDocsInfo, setUploadDocsInfo] = useState({
@@ -181,7 +182,7 @@ function App() {
       doc.setFont('helvetica', 'bold');
       doc.text(sectionTitle, 10, y);
       y += 10;
-    
+
       const columns = ['Field', 'Value'];
       const rows = Object.entries(sectionData).map(([field, value]) => {
         // Check for boolean values and convert them to Yes/No
@@ -192,7 +193,7 @@ function App() {
         }
         return [field, value];
       });
-    
+
       doc.autoTable({
         startY: y,
         head: [columns],
@@ -231,10 +232,10 @@ function App() {
           1: { cellWidth: '70%' }, // Second column (Value) takes 70% width
         },
       });
-    
+
       y = doc.lastAutoTable.finalY + 10;
     };
-    
+
 
     generateTable('Personal Information', formData.personalInfo);
     generateTable('Contact Information', formData.contactInfo);
@@ -249,18 +250,21 @@ function App() {
   };
 
   return (
-    <div className='flex flex-col w-full min-h-screen py-10 '>
-      <h2 className='text-2xl text-center w-full font-bold underline my-10'>Employment Form</h2>
+    <div className='flex flex-col w-full min-h-screen py-10 max-w-[1200px] mx-auto '>
+      <div className='flex w-[80%] items-center justify-between mx-auto'>
+        <img src={logo} alt="" width={120} />
+        <h2 className='text-2xl text-right font-bold underline  my-10'>Employment Form</h2>
+      </div>
       <div className='max-w-[1200px] w-full mx-auto flex flex-col justify-center items-center'>
         <Routes>
           <Route path='/' element={<Personal personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />} />
-          <Route path='/contact' element={<Contact contactInfo={contactInfo} setContactInfo={setContactInfo}/>} />
-          <Route path='/education' element={<Education educationInfo={educationInfo} setEducationInfo={setEducationInfo}/>} />
-          <Route path='/health' element={<Health healthInfo={healthInfo} setHealthInfo={setHealthInfo}/>} />
-          <Route path='/bank' element={<Bank bankInfo={bankInfo} setBankInfo={setBankInfo}/>} />
-          <Route path='/upload' element={<Upload uploadDocsInfo={uploadDocsInfo} setUploadDocsInfo={setUploadDocsInfo}/>} />
+          <Route path='/contact' element={<Contact contactInfo={contactInfo} setContactInfo={setContactInfo} />} />
+          <Route path='/education' element={<Education educationInfo={educationInfo} setEducationInfo={setEducationInfo} />} />
+          <Route path='/health' element={<Health healthInfo={healthInfo} setHealthInfo={setHealthInfo} />} />
+          <Route path='/bank' element={<Bank bankInfo={bankInfo} setBankInfo={setBankInfo} />} />
+          <Route path='/upload' element={<Upload uploadDocsInfo={uploadDocsInfo} setUploadDocsInfo={setUploadDocsInfo} />} />
           <Route path='/office' element={<Office />} />
-          <Route path='/declarations' element={<Declarations declarationsInfo={declarationsInfo} setDeclarationsInfo={setDeclarationsInfo}/>} />
+          <Route path='/declarations' element={<Declarations declarationsInfo={declarationsInfo} setDeclarationsInfo={setDeclarationsInfo} />} />
         </Routes>
 
         {/* Navigation Buttons */}
