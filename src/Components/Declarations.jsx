@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function Declarations({ declarationsInfo, setDeclarationsInfo }) {
+function Declarations({ declarationsInfo, setDeclarationsInfo, validatFormData }) {
   const handleCheckboxChange = (e) => {
     const { id, checked } = e.target;
   
@@ -8,10 +8,15 @@ function Declarations({ declarationsInfo, setDeclarationsInfo }) {
     setDeclarationsInfo((prevState) => ({
       ...prevState,
       [id]: checked, // Update the specific checkbox state
-    }));
-  };
-  
-  
+
+    })
+  );
+
+};
+
+useEffect(()=>{
+  validatFormData();
+},[declarationsInfo])
 
   return (
     <>

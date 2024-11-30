@@ -43,6 +43,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
     }
   };
 
+
   return (
     <>
       <div className="w-[80%] rounded-lg mx-auto">
