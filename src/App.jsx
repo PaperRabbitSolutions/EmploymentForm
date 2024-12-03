@@ -162,198 +162,162 @@ function App() {
 
   //** validation */
   
-
   const validatFormData = () => {
+    let errors = {};  // Object to store error messages
+   
+    // for debuging
     
-    const errors = {};
-
+    // console.log(personalInfo);
+    // console.log(contactInfo);
+    // console.log(educationInfo);
+    // console.log(bankInfo);
+    // console.log(healthInfo);
+    // console.log(declarationsInfo);
+    // console.log(uploadDocsInfo);
+  
     // Personal Details
     if (personalInfo.First_Name.length < 1) {
-      // errors.First_Name = "Enter Your First Name";
-      return ;
+      errors.firstName = "First name is required.";
     }
-    if (personalInfo.First_Name.length < 1) {
-      // errors.First_Name = "Enter Your First Name";
-      return ;
+    if (personalInfo.Last_Name.length < 1) {
+      errors.lastName = "Last name is required.";
     }
-//     if (personalInfo.Aadhar.length !== 12) {
-//       // errors.Aadhar = "Enter Your First Name";
-//       return;
-//     }
-//     if (personalInfo.Pan.length !== 9) {
-//       // errors.Pan = "Enter Your Pan Number";
-//       return ;
-//     }
-//     if (personalInfo.FatherName.length < 0) {
-//       // errors.FatherName = "Enter Your Father's Name";
-//       return ;
-//     }
-//     if (personalInfo.MotherName.length < 0) {
-//       // errors.MotherName = "Enter Your Mother's Name";
-//       return ;
-//     }
-//     if (personalInfo.DOB.length < 0) {
-//       // errors.DOB = "please select your Date of birth";
-//       return;
-//     }
-//     if (!personalInfo.Gender) {
-//       // errors.Gender = "Please Select Your Gender";
-//       return ;
-//     }
-//     if (!personalInfo.Nationality) {
-//       // errors.Gender = "Please Select your Nationality";
-//       return ;
-//     }
-//     if (!personalInfo.MaritalStatus) {
-//       // errors.MaritalStatus = "Please Select Your Marital Stauts";
-//       return ;
-//     }
-
-//     // contact
-
-//     if (contactInfo.Current_Address.length < 0) {
-//       // errors.Current_Address = "Please enter current address";
-//       return ;
-//     }
-//     if (contactInfo.Permanent_Address.length < 0) {
-//       // errors.Permanent_Address = "Please enter current address";
-//       return;
-//     }
-//     if (contactInfo.Mobile.length < 0) {
-//       // errors.Mobile = "Please enter current address";
-//       return ;
-//     }
-//     if (contactInfo.Linkedin.length < 0) {
-//       // errors.Linkedin = "Please enter current address";
-//       return ;
-//     }
-//     if (contactInfo.Email.length < 0) {
-//       // errors.Email = "Please enter current address";
-//       return;
-//     }
-
-//     //education
-//     if (!educationInfo.yearOfPassing) {
-//       // errors.yearOfPassing = "Please select a date";
-//       return ;
-//     }
-//     if (!educationInfo.university.length < 0) {
-//       // errors.university = "Please Enter valid university/College name";
-//       return ;
-//     }
-//     if (!educationInfo.techDomain) {
-//       // errors.techDomain = "Please Enter valid university/College name";
-//       return ;
-//     }
-
-//     if (educationInfo.qualification.length < 0) {
-//       // errors.university = "Please Enter valid university/College name";
-//       return ;
-//     }
-
-//     // //health
-
-//     // if (!healthInfo.bloodGroup) {
-//     //   errors;
-//     // }
-
-//     //declarations
-
-//     if (!declarationsInfo.nda) {
-//       // errors.nda = "Non Disclosure Agreement is not selected";
-//       return ;
-//     }
-//     if (!declarationsInfo.employmentAgreement) {
-//       // errors.employmentAgreement = "employment Agreement is not selected";
-//     return ;
-//     }
-//     if (!declarationsInfo.conflictOfInterest) {
-//       // errors.conflictOfInterest = "Conflict Of Interest is not selected";
-//       return;
-//     }
-//     if (!declarationsInfo.antiBriberyPolicy) {
-//       // errors.antiBriberyPolicy = "Anti Bribery Policy is not selected";
-//       return;
-//     }
-//     if (!declarationsInfo.dataProtectionAgreement) {
-//       // errors.dataProtectionAgreement =
-//       //   "Data Protection Agreement is not selected";
-//       return;
-//     }
-
-//     //upload documents
-
-//     if (!uploadDocsInfo.resume) {
-//       // errors.resume =
-//       //   "Please click all the documents and upload on the given email";
-//       return;
-//     }
-//     if (!uploadDocsInfo.photo) {
-//       // errors.photo =
-//       //   "Please click all the documents and upload on the given email";
-//       return ;
-//     }
-//     if (!uploadDocsInfo.panCard) {
-//       // errors.aadhaar =
-//       //   "Please click all the documents and upload on the given email";
-//     return;
-//     }
-//     if (!uploadDocsInfo.aadhaar) {
-//       // errors.aadhaar =
-//       //   "Please click all the documents and upload on the given email";
-//       return;
-//     }
-//     if (!uploadDocsInfo.panCard) {
-//       // errors.panCard =
-//       //   "Please click all the documents and upload on the given email";
-//       return;
-//     }
-//     if (!uploadDocsInfo.voterId) {
-//       // errors.voterId =
-//       //   "Please click all the documents and upload on the given email";
-//       return;
-//     }
-
-//     // Bank validation
-//     if (bankInfo.bank.length < 0) {
-//       // errors.bank = "Bank name is required.";
-//       return;
-//     }
-
-//     // Branch name validation
-//     if (!bankInfo.branch) {
-//       // errors.branch = "Branch name is required.";
-//       return;
-//     }
-
-//     // Account number validation (example: should be digits and 10 characters)
-//     if (!/^\d{10}$/.test(bankInfo.accountno)) {
-//       // errors.accountno = "Account number must be 10 digits.";
-//       return;
-//     }
-
-//     // IFSC code validation (example: XXXX0XXXXXX)
-//     if (bankInfo.IFSC.length<5) {
-//       // errors.IFSC = "IFSC code is invalid.";
-// return;
-//     }
-
-//     // PAN validation (example: ABCDE1234F)
-//     if (!/^[A-Z]{5}\d{4}[A-Z]$/.test(bankInfo.pan)) {
-//       // errors.pan = "PAN card format is invalid.";
-//       return;
-//     }
-
-//     // Tax regime validation
-//     if (!bankInfo.taxregime) {
-//       // errors.taxregime = "Tax regime is required.";
-//       return;
-//     }
-
-    // Return the errors object (if it's empty, all validations passed)
-    // return Object.keys(errors).length === 0 ? true : errors;
+    if (personalInfo.Aadhar.length !== 12) {
+      errors.aadhar = "Aadhar number must be exactly 12 digits.";
+    }
+    if (personalInfo.Pan.length !== 10) {
+      errors.pan = "PAN number must be exactly 10 characters.";
+    }
+    if (personalInfo.FatherName.length < 1) {
+      errors.fatherName = "Father's name is required.";
+    }
+    if (personalInfo.MotherName.length < 1) {
+      errors.motherName = "Mother's name is required.";
+    }
+    if (!personalInfo.DOB) {
+      errors.dob = "Date of birth is required.";
+    }
+    if (!personalInfo.Gender) {
+      errors.gender = "Gender is required.";
+    }
+    if (!personalInfo.Nationality) {
+      errors.nationality = "Nationality is required.";
+    }
+    if (!personalInfo.MaritalStatus) {
+      errors.maritalStatus = "Marital status is required.";
+    }
+  
+    // Contact Info
+    if (contactInfo.Current_Address.length < 1) {
+      errors.currentAddress = "Current address is required.";
+    }
+    if (contactInfo.Permanent_Address.length < 1) {
+      errors.permanentAddress = "Permanent address is required.";
+    }
+    if (contactInfo.Mobile.length !== 10) {
+      errors.mobile = "Mobile number must be 10 digits.";
+    }
+    if (contactInfo.Linkedin.length < 1) {
+      errors.linkedin = "LinkedIn profile is required.";
+    }
+    if (contactInfo.Email.length < 1) {
+      errors.email = "Email is required.";
+    }
+  
+    // Education Info
+    if (!educationInfo.yearOfPassing) {
+      errors.yearOfPassing = "Year of passing is required.";
+    }
+    if (educationInfo.university.length < 1) {
+      errors.university = "University is required.";
+    }
+    if (!educationInfo.techDomain) {
+      errors.techDomain = "Technical domain is required.";
+    }
+    if (educationInfo.qualification.length < 1) {
+      errors.qualification = "Qualification is required.";
+    }
+  
+    // Health Info
+    if (healthInfo.EmergencyContact.Name.length < 1) {
+      errors.emergencyName = "Emergency contact name is required.";
+    }
+    if (healthInfo.EmergencyContact.Relationship.length < 1) {
+      errors.emergencyRelationship = "Emergency contact relationship is required.";
+    }
+    if (healthInfo.EmergencyContact.Mobile.length !== 10) {
+      errors.emergencyMobile = "Emergency contact mobile must be 10 digits.";
+    }
+    if (healthInfo.EmergencyContact.Address.length < 1) {
+      errors.emergencyAddress = "Emergency contact address is required.";
+    }
+  
+    // Declarations
+    if (!declarationsInfo.nda) {
+      errors.nda = "NDA declaration is required.";
+    }
+    if (!declarationsInfo.employmentAgreement) {
+      errors.employmentAgreement = "Employment agreement declaration is required.";
+    }
+    if (!declarationsInfo.conflictOfInterest) {
+      errors.conflictOfInterest = "Conflict of interest declaration is required.";
+    }
+    if (!declarationsInfo.antiBriberyPolicy) {
+      errors.antiBriberyPolicy = "Anti-bribery policy declaration is required.";
+    }
+    if (!declarationsInfo.dataProtectionAgreement) {
+      errors.dataProtectionAgreement = "Data protection agreement declaration is required.";
+    }
+    if (!declarationsInfo.codeOfConduct) {
+      errors.codeOfConduct = "Code of conduct declaration is required.";
+    }
+  
+    // Upload Documents
+    if (!uploadDocsInfo.resume) {
+      errors.resume = "Resume is required.";
+    }
+    if (!uploadDocsInfo.photo) {
+      errors.photo = "Photo is required.";
+    }
+    if (!uploadDocsInfo.panCard) {
+      errors.panCard = "PAN card is required.";
+    }
+    if (!uploadDocsInfo.aadhaar) {
+      errors.aadhaar = "Aadhar card is required.";
+    }
+    if (!uploadDocsInfo.voterId) {
+      errors.voterId = "Voter ID is required.";
+    }
+  
+    // Bank Info
+    if (bankInfo.bank.length < 1) {
+      errors.bank = "Bank name is required.";
+    }
+    if (bankInfo.branch.length < 1) {
+      errors.branch = "Branch name is required.";
+    }
+    if (bankInfo.accountno.length < 5) {
+      errors.accountno = "Account number must be at least 5 digits.";
+    }
+    if (bankInfo.IFSC.length < 2) {
+      errors.ifsc = "IFSC code is required.";
+    }
+    if (bankInfo.PF.length < 1) {
+      errors.pf = "Provident Fund number is required.";
+    }
+  
+    // If any error exists, return and display it
+    if (Object.keys(errors).length > 0) {
+        // Set the error object to be displayed in the UI
+      setIsDisable(true);  // Disable the form submission if there are errors
+      return;  // Exit function if validation fails
+    }
+  
+    // If no errors, enable form submission
     setIsDisable(false);
+    return true;  // Form is valid
   };
+  
 
   const isLastPage = currentIndex === formRoutes.length - 1;
 
@@ -536,7 +500,7 @@ function App() {
           {isLastPage ? (
             <button
               onClick={generatePDF} // Call the generatePDF function
-              className="px-4 enabled:bg-green-600 py-2 bg-red-500 text-white rounded-lg hover:bg-green-600"
+              className="px-4 enabled:bg-green-600 py-2 bg-red-500 text-white rounded-lg"
               disabled={isDisable}
             >
               Submit

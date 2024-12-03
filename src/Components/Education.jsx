@@ -1,10 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 
 function Education({ educationInfo, setEducationInfo }) {
 
   // Function to handle adding a skill
   const handleAddSkill = () => {
-    if (!educationInfo.newSkill) return;  // Ensure there's something in the input
+    if (!newSkill) return;  // Ensure there's something in the input
     
     if (educationInfo.skills.length >= 8) {
       alert('You can only add up to 8 skills');
@@ -12,12 +13,12 @@ function Education({ educationInfo, setEducationInfo }) {
     }
 
     // Only add the skill if it doesn't already exist
-    if (!educationInfo.skills.includes(educationInfo.newSkill)) {
+    if (!educationInfo.skills.includes(newSkill)) {
       setEducationInfo(prevState => ({
         ...prevState,
-        skills: [...prevState.skills, prevState.newSkill],
-        newSkill: '',  // Clear the input field after adding
+        skills: [...prevState.skills,newSkill]
       }));
+      setNewSkill("");
     } else {
       alert('This skill has already been added!');
     }
@@ -30,6 +31,8 @@ function Education({ educationInfo, setEducationInfo }) {
       skills: prevState.skills.filter(skill => skill !== skillToDelete),
     }));
   };
+
+  const [newSkill,setNewSkill]=useState("");
 
   return (
     <>
@@ -117,8 +120,8 @@ function Education({ educationInfo, setEducationInfo }) {
                 <input
                   type="text"
                   id="skills"
-                  value={educationInfo.newSkill}
-                  onChange={(e) => setEducationInfo({ ...educationInfo, newSkill: e.target.value })}
+                  value={newSkill}
+                  onChange={(e) => setNewSkill(e.target.value)}
                   className="px-2 py-1 border-[1px] rounded-lg outline-none w-full"
                   placeholder="Type a skill and press Enter"
                 />
