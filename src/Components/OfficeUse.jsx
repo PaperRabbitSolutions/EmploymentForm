@@ -15,7 +15,7 @@ function OfficeUse({ employmentDetails, setEmploymentDetails }) {
 
   return (
     <>
-      <div className="my-4 w-[80%] mx-auto">
+      <div className="my-4 w-[80%] mx-auto sm:text-sm lg:text-base">
         <h2 className="py-2 text-xl font-semibold">Employment Details</h2>
         <form action="" className="space-y-2">
           {/* Using grid for two fields per row */}

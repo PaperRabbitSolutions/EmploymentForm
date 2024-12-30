@@ -323,6 +323,8 @@ function App() {
 
   // Function to handle form submission and generate PDF
   const generatePDF = () => {
+    
+
     const doc = new jsPDF();
     doc.setFontSize(12);
 

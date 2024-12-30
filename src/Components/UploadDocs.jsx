@@ -10,7 +10,7 @@ function UploadDocs({ uploadDocsInfo, setUploadDocsInfo }) {
   
     return (
       <>
-        <div className="my-4 w-[80%] mx-auto">
+        <div className="my-4 w-[80%] mx-auto sm:text-sm lg:text-base">
           <h2 className="font-semibold text-xl my-4">Document Submission</h2>
   
           <form className="space-y-2">

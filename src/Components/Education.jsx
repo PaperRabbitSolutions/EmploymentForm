@@ -36,7 +36,7 @@ function Education({ educationInfo, setEducationInfo }) {
 
   return (
     <>
-      <div className="my-4 w-[80%] mx-auto">
+      <div className="my-4 w-[80%] mx-auto sm:text-sm lg:text-base">
         <h3 className="text-xl font-semibold my-4">Educational Background</h3>
         <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Qualification */}

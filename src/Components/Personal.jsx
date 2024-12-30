@@ -46,7 +46,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
 
   return (
     <>
-      <div className="w-[80%] rounded-lg mx-auto">
+      <div className="w-[80%] rounded-lg mx-auto sm:text-sm lg:text-base">
         <h2 className="text-xl text-left font-semibold underline py-6">Personal Details:</h2>
         <form className="space-y-2 mx-auto">
           {/* First Row */}
