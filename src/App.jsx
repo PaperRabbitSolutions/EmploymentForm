@@ -310,6 +310,7 @@ function App() {
     if (Object.keys(errors).length > 0) {
         // Set the error object to be displayed in the UI
       setIsDisable(true);  // Disable the form submission if there are errors
+      
       return;  // Exit function if validation fails
     }
   
@@ -324,7 +325,10 @@ function App() {
   // Function to handle form submission and generate PDF
   const generatePDF = () => {
     
-
+if(isDisable)
+{
+  console.log(errors);
+}
     const doc = new jsPDF();
     doc.setFontSize(12);
 
@@ -349,17 +353,19 @@ function App() {
     const generateTable = (sectionTitle, sectionData) => {
       doc.setFontSize(12);
       doc.setFont("helvetica", "bold");
-      doc.text(sectionTitle, 10, y);
+      doc.text(sectionTitle, 12, y);
       y += 10;
 
-      const columns = ["Field", "Value"];
+      const columns = ["Field", "Details"];
       const rows = Object.entries(sectionData).map(([field, value]) => {
         // Check for boolean values and convert them to Yes/No
         if (typeof value === "boolean") {
           value = value ? "Yes" : "No";
-        } else if (typeof value === "object") {
-          value = JSON.stringify(value); // If the value is an object, stringify it
-        }
+        } else if (typeof value === "object" && value !== null) {
+          value = Object.entries(value)
+              .map(([key, value]) => `${key}:${value}`)
+              .join(", ");
+      }
      
         return [field, value];
       });
@@ -370,7 +376,7 @@ function App() {
         body: rows,
         theme: "striped",
         headStyles: {
-          fillColor: [0, 56, 104], // Dark Blue for header
+          fillColor: [0, 0, 0], // Dark Blue for header
           textColor: [255, 255, 255], // White text
           fontSize: 12,
           font: "helvetica", // Font style for header
