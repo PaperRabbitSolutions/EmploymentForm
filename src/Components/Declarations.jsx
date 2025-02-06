@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function Declarations({ declarationsInfo, setDeclarationsInfo, validatFormData }) {
   const handleCheckboxChange = (e) => {
@@ -18,6 +20,8 @@ useEffect(()=>{
   validatFormData();
 },[declarationsInfo])
 
+
+
   return (
     <>
       <div className="my-4 w-[80%] mx-auto">
@@ -31,7 +35,7 @@ useEffect(()=>{
                 checked={declarationsInfo.nda}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="nda">Non Disclosure Agreement</label>
+             <Link to="/nda"> <label htmlFor="nda" className='cursor-pointer hover:text-blue-500 ' >Non Disclosure Agreement</label></Link>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -49,7 +53,7 @@ useEffect(()=>{
                 checked={declarationsInfo.codeOfConduct}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="codeOfConduct">Code Of Conduct</label>
+              <label htmlFor="codeOfConduct" className='cursor-pointer hover:text-blue-500'><Link to="/codeofconduct">Code Of Conduct</Link></label>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -76,7 +80,7 @@ useEffect(()=>{
                 checked={declarationsInfo.antiBriberyPolicy}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="antiBriberyPolicy">Anti-Bribery Policy</label>
+              <label htmlFor="antiBriberyPolicy" className='cursor-pointer hover:text-blue-500'><Link to="/antibribary">Anti-Bribery Policy</Link></label>
             </div>
             <div className="flex items-center gap-2">
               <input

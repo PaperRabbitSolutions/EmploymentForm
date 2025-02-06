@@ -9,6 +9,7 @@ import Declarations from "./Components/Declarations";
 import Office from "./Components/OfficeUse";
 import { GiBank, GiBookshelf } from "react-icons/gi";
 import logo from "../src/assets/Logo.svg";
+import { FaFileWaveform } from "react-icons/fa6";
 import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import { MdHealthAndSafety, MdDocumentScanner } from "react-icons/md";
 import { useState } from "react";
@@ -22,6 +23,10 @@ import {
 } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable"; // Importing the autoTable plugin
+import Nda from "./Pages/Nda";
+import AntiBribery from "./Pages/AntiBribary";
+import CodeOfConduct from "./Pages/CodeOfConduct";
+import Agreements from "./Components/Agreements";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -143,6 +148,7 @@ function App() {
     "/health",
     "/bank",
     "/upload",
+    "/agreements",
     "/declarations",
   ];
 
@@ -480,6 +486,11 @@ if(isDisable)
               />
             }
           />
+          <Route path="/agreements" element={<Agreements/>}/>
+         
+          <Route path="/nda" element={<Nda/>}/>
+          <Route path="/antibribary" element={<AntiBribery/>}/>
+          <Route path="/codeofconduct" element={<CodeOfConduct/>}/>
           <Route path="/office" element={<Office />} />
           <Route
             path="/declarations"
@@ -558,6 +569,11 @@ if(isDisable)
         <span className="text-base md:text-xl lg:text-3xl">
           <NavLink to="/upload">
             <MdDocumentScanner />
+          </NavLink>
+        </span>
+        <span className="text-base md:text-xl lg:text-3xl">
+          <NavLink to="/Agreements">
+            <FaFileWaveform />
           </NavLink>
         </span>
 
