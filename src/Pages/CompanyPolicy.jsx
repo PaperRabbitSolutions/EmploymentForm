@@ -279,6 +279,10 @@ const CompanyPolicy = () => {
                             <li>Job knowledge, quality of work, communication skills, teamwork, and adherence to company policies.</li>
                         </ul>
                     </div>
+                    <div className="flex items-start gap-2">
+                        <input type="checkbox" name="" id="" className="w-8 h-8 " />
+                        <p className="text-sm font-semibold text-slate-600 ">I hereby acknowledge and accept all terms and conditions outlined in the company policies and guidelines mentioned above.</p>
+                    </div>
                 </div>
             </div>
         </div>

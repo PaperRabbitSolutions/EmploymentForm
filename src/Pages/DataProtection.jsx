@@ -1,7 +1,7 @@
 const DataProtection = () => {
     return (
-        <div className="max-w-4xl mx-auto px-6 py-8">
-            <h1 className="text-2xl font-bold text-center mb-8">Data Protection Compliance Agreement</h1>
+        <div className="max-w-4xl mx-auto px-6 ">
+            <h1 className="text-2xl font-bold text-center mb-8 underline">Data Protection Compliance Agreement</h1>
             
             <div className="space-y-8">
                 <p className="font-semibold text-lg text-slate-600">
@@ -9,7 +9,7 @@ const DataProtection = () => {
                 </p>
 
                 <p className="text-sm text-slate-600">
-                    I, _____________________________________________ (Employee Name), at this moment, acknowledge and agree to the following terms regarding data protection as an employee of PaperRabbit Solutions Pvt Ltd:
+                    I, [Employee name], at this moment, acknowledge and agree to the following terms regarding data protection as an employee of PaperRabbit Solutions Pvt Ltd:
                 </p>
 
                 <div>
@@ -61,15 +61,11 @@ const DataProtection = () => {
                     </p>
                 </div>
 
-                <div className="space-y-4 mt-6">
-                    <p className="text-sm text-slate-600">
-                        By signing below, I confirm that I have read, understood, and agree to comply with the above terms and conditions regarding data protection.
+                <div className="flex gap-2 items-start ">
+                    <input type="checkbox" name="" id="" className="w-8 h-8 " />
+                    <p className="text-sm font-semibold text-slate-600 ">
+                         I confirm that I have read, understood, and agree to comply with the above terms and conditions regarding data protection.
                     </p>
-
-                    <div>
-                        <p className="text-sm text-slate-600">Employee Signature: ___________________</p>
-                        <p className="text-sm text-slate-600">Date: ________________</p>
-                    </div>
                 </div>
             </div>
         </div>

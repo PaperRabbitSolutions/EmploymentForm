@@ -7,17 +7,13 @@ import Bank from "./Components/Bank";
 import Upload from "./Components/uploadDocs";
 import Declarations from "./Components/Declarations";
 import Office from "./Components/OfficeUse";
-import { GiBank, GiBookshelf } from "react-icons/gi";
+// import Personal from "./Personal";
 import logo from "../src/assets/Logo.svg";
-import { FaFileWaveform } from "react-icons/fa6";
-import { FaUser, FaPhoneAlt } from "react-icons/fa";
-import { MdHealthAndSafety, MdDocumentScanner } from "react-icons/md";
 import { useState } from "react";
-import { FaFileSignature } from "react-icons/fa6";
+
 import {
   Route,
   Routes,
-  NavLink,
   useNavigate,
   useLocation,
 } from "react-router-dom";
@@ -27,6 +23,7 @@ import Nda from "./Pages/Nda";
 import AntiBribery from "./Pages/AntiBribary";
 import CodeOfConduct from "./Pages/CodeOfConduct";
 import Agreements from "./Components/Agreements";
+import SideBar from "./Components/SideBar";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -505,8 +502,8 @@ if(isDisable)
         </Routes>
 
         {/* Navigation Buttons */}
-        <div className="flex items-center justify-between w-[80%] md:w-[70%] lg:w-[60%] mt-4 gap-4">
-          {/* Hide "Previous" button on the first page */}
+        <div className=" w-full max-w-[900px] bg-white px-10 py-10 bottom-0 fixed  flex items-center justify-between  ">
+          
           {currentIndex > 0 && (
             <button
               onClick={goToPrevious}
@@ -535,54 +532,8 @@ if(isDisable)
         </div>
       </div>
 
-      {/* Sidebar with icons */}
-      <div className="absolute top-1/4 right-[4%] md:right-[4%] lg:right-[8%] flex flex-col gap-10 text-slate-600">
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/">
-            <FaUser />
-          </NavLink>
-        </span>
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/contact">
-            <FaPhoneAlt />
-          </NavLink>
-        </span>
-
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/education">
-            <GiBookshelf />
-          </NavLink>
-        </span>
-
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/health">
-            <MdHealthAndSafety />
-          </NavLink>
-        </span>
-
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/bank">
-            <GiBank />
-          </NavLink>
-        </span>
-
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/upload">
-            <MdDocumentScanner />
-          </NavLink>
-        </span>
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/Agreements">
-            <FaFileWaveform />
-          </NavLink>
-        </span>
-
-        <span className="text-base md:text-xl lg:text-3xl">
-          <NavLink to="/declarations">
-            <FaFileSignature />
-          </NavLink>
-        </span>
-      </div>
+     <SideBar/>
+      
     </div>
   );
 }

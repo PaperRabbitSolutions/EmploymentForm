@@ -73,17 +73,16 @@ const AntiBribery = () => {
                     </p>
                 </div>
 
-                <div className="mb-4">
-                    <p className="font-semibold text-slate-600">10. Acknowledgment and Agreement</p>
-                    <p className="text-sm text-slate-600">
-                        By signing this Agreement, the Employee acknowledges that they have read, understood, and agree to comply with the Anti-Bribery Policy of PaperRabbit Solutions Pvt. Ltd.
+                <div className="mb-4 flex items-start gap-2">
+                    <input type="checkbox" className="w-8 h-8 mt-1" />
+                    {/* <p className="font-semibold text-slate-600">10. Acknowledgment and Agreement</p> */}
+                    
+                    <p className="text-sm text-slate-600 font-semibold">
+                        By Accepting this Agreement, the Employee acknowledges that they have read, understood, and agree to comply with the Anti-Bribery Policy of PaperRabbit Solutions Pvt. Ltd.
                     </p>
                 </div>
 
-                <div className="space-y-2 text-sm text-slate-600">
-                    <p>Employee Signature: ___________________</p>
-                    <p>Date: ________________</p>
-                </div>
+                
             </div>
         </div>
     )

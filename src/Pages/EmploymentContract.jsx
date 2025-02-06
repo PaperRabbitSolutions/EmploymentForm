@@ -103,10 +103,11 @@ const EmploymentContract = () => {
                     </p>
                 </div>
 
-                <div className="space-y-4 mt-6">
-                    <p className="text-sm text-slate-600">
+                <div className=" mt-6">
+                    <p className="text-sm text-slate-600 font-semibold">
                         IN WITNESS of which, the Parties hereto have executed this Contract as of the date first above written.
                     </p>
+                    <div className="flex justify-between mt-16">
                     <div>
                         <p className="text-sm text-slate-600">PaperRabbit Solutions Pvt Ltd</p>
                         <p className="text-sm text-slate-600">By: [Authorized Signatory]</p>
@@ -115,6 +116,7 @@ const EmploymentContract = () => {
                     <div>
                         <p className="text-sm text-slate-600">[Employee Name]</p>
                         <p className="text-sm text-slate-600">By: [Employee Signature]</p>
+                    </div>
                     </div>
                 </div>
             </div>

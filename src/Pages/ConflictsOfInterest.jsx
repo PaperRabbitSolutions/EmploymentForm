@@ -108,17 +108,14 @@ const ConflictOfInterest = () => {
                 </div>
 
                 <div>
-                    <p className="text-sm text-slate-600">
-                        6. Acknowledgment
-                        <br />
-                        By signing below, I affirm that I have read and understood the Company’s policy on conflicts of interest and that the information provided in this Disclosure is accurate and complete to the best of my knowledge.
-                    </p>
+                    <div className="flex gap-2 items-start">
+                        
+                        <input type="checkbox" name="" id="" className="w-8 h-8 " />
+                         <p className="text-sm font-semibold text-slate-600 ">I affirm that I have read and understood the Company’s policy on conflicts of interest and that the information provided in this Disclosure is accurate and complete to the best of my knowledge.</p>
+                    </div>
                 </div>
 
-                <div className="space-y-2 text-sm text-slate-600">
-                    <p>Employee Signature: ___________________</p>
-                    <p>Date: ________________</p>
-                </div>
+            
             </div>
         </div>
     )

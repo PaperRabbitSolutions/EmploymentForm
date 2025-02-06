@@ -135,9 +135,9 @@ const Nda = () => {
                 </div>
             </div>
 
-            <div className="mb-6">
-                <h3 className="text-lg font-semibold text-slate-600">8. Acknowledgment</h3>
-                <p className="text-sm text-slate-600">
+            <div className="flex items-start gap-2">
+                <input type="checkbox" className="w-8 h-8 mt-1" />
+                <p className="text-sm text-slate-600 font-semibold">
                     The Employee acknowledges that they have read and understood this Agreement and agree to be bound by its terms.
                 </p>
             </div>

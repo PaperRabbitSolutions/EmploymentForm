@@ -93,7 +93,8 @@ const CodeOfConduct = () => {
                 </p>
 
                 <div className="mt-8">
-                    <p className="text-sm text-slate-600">
+                  
+                    <p className="text-sm text-slate-600 font-semibold">
                         Thank you for your dedication to upholding these principles and contributing to a positive and productive workplace environment.
                     </p>
                     <p className="font-semibold text-sm text-slate-600 mt-4">PaperRabbit Solutions Pvt Ltd Management</p>
