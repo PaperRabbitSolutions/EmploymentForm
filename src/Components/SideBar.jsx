@@ -24,7 +24,7 @@ const SideBar = () => {
   ];
 
   return (
-    <div className="fixed top-1/4 right-[4%] md:right-[4%] lg:right-[8%] flex flex-col gap-10 text-slate-600">
+    <div className="py-4 flex justify-center gap-12 text-slate-600">
       {[
         { icon: <FaUser />, to: "/", message: hoverMessages[0] },
         { icon: <FaPhoneAlt />, to: "/contact", message: hoverMessages[1] },
@@ -37,17 +37,18 @@ const SideBar = () => {
       ].map((item, index) => (
         <span
           key={index}
-          className="relative text-base md:text-xl lg:text-3xl"
+          className={`relative p-3 rounded-full text-base md:text-xl lg:text-lg ${
+            // Apply background color conditionally
+            window.location.pathname === item.to
+              ? "bg-blue-500"
+              : "bg-slate-300"
+          }`}
           onMouseEnter={() => setHoveredIndex(index)} // Set hovered index on hover
           onMouseLeave={() => setHoveredIndex(null)} // Reset on mouse leave
         >
           <NavLink
             to={item.to}
-            className={({ isActive }) =>
-              isActive
-                ? "text-blue-500" // Apply green color for active icon
-                : "text-slate-600"
-            }
+            className="text-white"
           >
             {item.icon}
           </NavLink>

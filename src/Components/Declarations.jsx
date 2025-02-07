@@ -35,7 +35,7 @@ useEffect(()=>{
                 checked={declarationsInfo.nda}
                 onChange={handleCheckboxChange}
               />
-             <Link to="/nda"> <label htmlFor="nda" className='cursor-pointer hover:text-blue-500 ' >Non Disclosure Agreement</label></Link>
+             <label htmlFor="nda" className='cursor-pointer hover:text-blue-500 ' >Non Disclosure Agreement</label>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -80,7 +80,7 @@ useEffect(()=>{
                 checked={declarationsInfo.antiBriberyPolicy}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="antiBriberyPolicy" className='cursor-pointer hover:text-blue-500'><Link to="/antibribary">Anti-Bribery Policy</Link></label>
+              <label htmlFor="antiBriberyPolicy" className='cursor-pointer hover:text-blue-500'>Anti Bribery Policy</label>
             </div>
             <div className="flex items-center gap-2">
               <input
