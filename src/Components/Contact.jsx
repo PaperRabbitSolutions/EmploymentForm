@@ -12,7 +12,7 @@ function Contact({ contactInfo, setContactInfo }) {
 
   return (
     <>
-      <div className="my-4 w-[80%] mx-auto sm:text-sm lg:text-base">
+      <div className="my-12 w-[80%] mx-auto sm:text-sm lg:text-base">
         <h2 className="font-semibold text-xl my-4 underline">Contact Details:</h2>
         <form className="space-y-2">
           {/* Permanent Address in its own row */}

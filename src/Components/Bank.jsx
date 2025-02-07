@@ -21,13 +21,13 @@ function Bank({ bankInfo, setBankInfo }) {
 
   return (
     <>
-      <div className="my-4 w-[80%] mx-auto sm:text-sm lg:text-base">
+      <div className="my-12 w-[80%] mx-auto sm:text-sm lg:text-base">
         <h3 className="text-xl font-semibold my-2">Bank Details</h3>
-        <form className="space-y-4">
+        <form className="space-y-6">
           
           {/* First Row: Bank Name, Branch Name */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="bank" className="text-sm font-medium">Bank Name</label>
               <input
                 type="text"
@@ -37,7 +37,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="branch" className="text-sm font-medium">Branch Name</label>
               <input
                 type="text"
@@ -51,7 +51,7 @@ function Bank({ bankInfo, setBankInfo }) {
 
           {/* Second Row: Account No., IFSC Code */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="accountno" className="text-sm font-medium">Account No.</label>
               <input
                 type="number"
@@ -61,7 +61,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="IFSC" className="text-sm font-medium">IFSC Code</label>
               <input
                 type="text"
@@ -76,7 +76,7 @@ function Bank({ bankInfo, setBankInfo }) {
 
           {/* Third Row: TAN No., Tax Regime Preference */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="pan" className="text-sm font-medium">TAN No.</label>
               <input
                 type="text"
@@ -86,7 +86,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="taxregime" className="text-sm font-medium">Tax Regime Preference</label>
               <div className="flex items-center gap-2">
                 <input
@@ -115,7 +115,7 @@ function Bank({ bankInfo, setBankInfo }) {
 
           {/* Fourth Row: Provident Fund, Employee State Insurance */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="PF" className="text-sm font-medium">Provident Fund Account No.</label>
               <input
                 type="text"
@@ -125,7 +125,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="esi" className="text-sm font-medium">Employee State Insurance No.</label>
               <input
                 type="text"
@@ -139,7 +139,7 @@ function Bank({ bankInfo, setBankInfo }) {
 
           {/* Fifth Row: Universal Account No., Gratuity Nominee Detail */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="universal" className="text-sm font-medium">Universal Account No.</label>
               <input
                 type="text"
@@ -149,7 +149,7 @@ function Bank({ bankInfo, setBankInfo }) {
                 className="px-2 py-1 rounded-lg border-[1px] outline-none w-full"
               />
             </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="gratuity" className="text-sm font-medium">Gratuity Nominee Detail</label>
               <input
                 type="text"

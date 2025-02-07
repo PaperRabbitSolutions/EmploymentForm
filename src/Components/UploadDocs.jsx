@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function UploadDocs({ uploadDocsInfo, setUploadDocsInfo }) {
     // Function to handle checkbox changes
     const handleCheckboxChange = (e) => {
@@ -10,12 +12,12 @@ function UploadDocs({ uploadDocsInfo, setUploadDocsInfo }) {
   
     return (
       <>
-        <div className="my-4 w-[80%] mx-auto sm:text-sm lg:text-base">
+        <div className="my-12 w-[80%] mx-auto sm:text-sm lg:text-base">
           <h2 className="font-semibold text-xl my-4">Document Submission</h2>
   
-          <form className="space-y-2">
+          <form className="space-y-8">
             {/* Grid Layout for two rows */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -109,7 +111,7 @@ function UploadDocs({ uploadDocsInfo, setUploadDocsInfo }) {
             </div>
             <p className="text-sm w-full text-slate-700">
               ** Note: All the documents mentioned here should be sent to the official 
-              <a href="mailto:hr@paperrabbit.world" className="text-blue-700"> email-id</a>
+              <Link href="mailto:hr@paperrabbit.world" className="text-blue-700"> email-id</Link>
             </p>
           </form>
         </div>

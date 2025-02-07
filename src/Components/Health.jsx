@@ -24,7 +24,7 @@ function Health({ healthInfo, setHealthInfo }) {
 
   return (
     <>
-      <div className="my-4 w-[80%] mx-auto sm:text-sm lg:text-base">
+      <div className="my-12 w-[80%] mx-auto sm:text-sm lg:text-base">
         <h2 className="font-semibold text-xl my-2 underline">Health Information:</h2>
         <form className="space-y-4">
           {/* First Row: Blood Group and Allergies */}

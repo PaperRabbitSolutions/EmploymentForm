@@ -1,5 +1,18 @@
-*{
-  box-sizing: border-box;
+/* For Webkit-based browsers like Chrome, Safari */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
-  padding: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;  /* Standard */
+}
+
+/* For Microsoft Edge */
+input[type="number"] {
+  -ms-appearance: none;
+  appearance: none; /* Standard */
 }

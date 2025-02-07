@@ -46,12 +46,12 @@ function Personal({ personalInfo, setPersonalInfo }) {
 
   return (
     <>
-      <div className="w-[80%] rounded-lg mx-auto sm:text-sm lg:text-base">
+      <div className="w-[80%] my-12 rounded-lg mx-auto sm:text-sm lg:text-base">
         <h2 className="text-xl text-left font-semibold underline py-6">Personal Details:</h2>
-        <form className="space-y-2 mx-auto">
+        <form className="space-y-6 mx-auto">
           {/* First Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="First_Name" className="text-sm font-medium">First Name</label>
               <input
                 type="text"
@@ -61,7 +61,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
                 onChange={handleChange}
               />
             </div>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="Last_Name" className="text-sm font-medium">Last Name</label>
               <input
                 type="text"
@@ -76,7 +76,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
           {/* Second Row */}
           <div className="flex flex-wrap gap-6 justify-between">
             {/* Date of Birth */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="DOB" className="text-sm font-medium">Date of Birth</label>
               <input
                 type="date"
@@ -88,7 +88,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
             </div>
 
             {/* Gender */}
-            <div className="flex-2 min-w-[100px] flex flex-col gap-1">
+            <div className="flex-2 min-w-[100px] flex flex-col gap-2">
               <label htmlFor="gender" className="text-sm font-medium">Gender</label>
               <div className="flex gap-4 items-center">
                 <div className="space-x-2">
@@ -117,7 +117,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
             </div>
 
             {/* Marital Status */}
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="MaritalStatus" className="text-sm font-medium">Marital Status</label>
               <select
                 id="MaritalStatus"
@@ -136,7 +136,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
 
           {/* Third Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="Nationality" className="text-sm font-medium">Nationality</label>
               <select
                 id="Nationality"
@@ -152,7 +152,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               </select>
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="Pan" className="text-sm font-medium">Pan no.</label>
               <input
                 type="text"
@@ -166,7 +166,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
 
           {/* Fourth Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="Aadhar" className="text-sm font-medium">Aadhar no.</label>
               <input
                 type="text"
@@ -177,7 +177,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="Passport" className="text-sm font-medium">Passport no.</label>
               <input
                 type="text"
@@ -191,7 +191,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
 
           {/* Fifth Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="FatherName" className="text-sm font-medium">Father's Name</label>
               <input
                 type="text"
@@ -202,7 +202,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="MotherName" className="text-sm font-medium">Mother's Name</label>
               <input
                 type="text"
@@ -216,7 +216,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
 
           {/* Sixth Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="SpouseName" className="text-sm font-medium">Spouse's Name</label>
               <input
                 type="text"
@@ -227,7 +227,7 @@ function Personal({ personalInfo, setPersonalInfo }) {
               />
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="DependentDetails" className="text-sm font-medium">Dependent Details</label>
               <div className="flex gap-4 flex-wrap">
                 <div className="flex items-center space-x-2">

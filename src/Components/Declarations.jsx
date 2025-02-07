@@ -24,10 +24,10 @@ useEffect(()=>{
 
   return (
     <>
-      <div className="my-4 w-[80%] mx-auto">
+      <div className="my-12 w-[80%] mx-auto">
         <h2 className="text-xl font-semibold my-4 underline">Declarations</h2>
         <form action="" className="space-y-2 sm:text-sm lg:text-base">
-          <div className="flex flex-wrap gap-4 xl:gap-16">
+          <div className="space-y-4 md:space-y-6 xl:space-y-8">
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -92,7 +92,7 @@ useEffect(()=>{
               <label htmlFor="dataProtectionAgreement">Data Protection Agreement</label>
             </div>
           </div>
-          <h4 className='text-sm'>Note:Please send all the required documents along with this downloaded employment form to the official email: paperrabbit.world</h4>
+          <h4 className='text-sm '>Note:Please send all the required documents along with this downloaded employment form to the official <Link href="mailto:hr@paperrabbit.world" className="text-blue-700"> email-id</Link></h4>
         </form>
       </div>
     </>
