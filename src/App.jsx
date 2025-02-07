@@ -24,6 +24,7 @@ import AntiBribery from "./Pages/AntiBribary";
 import CodeOfConduct from "./Pages/CodeOfConduct";
 import Agreements from "./Components/Agreements";
 import SideBar from "./Components/SideBar";
+import Header from "./Components/Header";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -167,17 +168,6 @@ function App() {
   
   const validatFormData = () => {
     let errors = {};  // Object to store error messages
-   
-    // for debuging
-    
-    // console.log(personalInfo);
-    // console.log(contactInfo);
-    // console.log(educationInfo);
-    // console.log(bankInfo);
-    // console.log(healthInfo);
-    // console.log(declarationsInfo);
-    // console.log(uploadDocsInfo);
-  
     // Personal Details
     if (personalInfo.First_Name.length < 1) {
       errors.firstName = "First name is required.";
@@ -429,12 +419,7 @@ if(isDisable)
 
   return (
     <div className="flex flex-col w-full min-h-screen py-10 max-w-[1200px] mx-auto ">
-      <div className="flex w-[80%] items-center justify-between mx-auto">
-        <img src={logo} alt="" width={120} />
-        <h2 className="text-2xl text-right font-bold underline  my-10">
-          Employment Form
-        </h2>
-      </div>
+      <Header/>
       <div className="max-w-[1200px] w-full mx-auto flex flex-col justify-center items-center">
         <Routes>
           <Route
@@ -501,35 +486,38 @@ if(isDisable)
           />
         </Routes>
 
-        {/* Navigation Buttons */}
-        <div className=" w-full max-w-[900px] bg-white px-10 py-10 bottom-0 fixed  flex items-center justify-between  ">
-          
-          {currentIndex > 0 && (
-            <button
-              onClick={goToPrevious}
-              className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
-            >
-              Previous
-            </button>
-          )}
+        <div className="w-full max-w-[900px] bg-white px-10 py-10 bottom-0 fixed flex items-center justify-between">
+  {/* Previous Button */}
+  <button
+    onClick={goToPrevious}
+    className={`px-4 py-2 rounded-lg ${currentIndex > 0 ? 'bg-gray-500 text-white hover:bg-gray-600' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+    disabled={currentIndex === 0}
+  >
+    Previous
+  </button>
 
-          {isLastPage ? (
-            <button
-              onClick={generatePDF} // Call the generatePDF function
-              className="px-4 enabled:bg-green-600 py-2 bg-red-500 text-white rounded-lg"
-              disabled={isDisable}
-            >
-              Submit
-            </button>
-          ) : (
-            <button
-              onClick={goToNext}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-            >
-              Next
-            </button>
-          )}
-        </div>
+  {/* Next Button */}
+  {currentIndex !== formRoutes.length - 1 ? (
+    <button
+      onClick={goToNext}
+      className={`px-4 py-2 text-white rounded-lg ${currentIndex < formRoutes.length - 1 ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-300 cursor-not-allowed'}`}
+      disabled={currentIndex === formRoutes.length - 1}
+      title={currentIndex === formRoutes.length - 1 ? 'Cannot go next on the last page' : ''}
+    >
+      Next
+    </button>
+  ) : (
+    <button
+      onClick={generatePDF} // Call the generatePDF function
+      className={`px-4 py-2 text-white rounded-lg ${isDisable ? 'bg-red-500 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'}`}
+      disabled={isDisable}
+    >
+      Submit
+    </button>
+  )}
+</div>
+
+
       </div>
 
      <SideBar/>

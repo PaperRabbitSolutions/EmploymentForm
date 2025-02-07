@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 const ConflictOfInterest = () => {
+    // Initial state for each section's checkbox (nothing selected initially)
+    const [financialInterest, setFinancialInterest] = useState(false);
+    const [personalRelationship, setPersonalRelationship] = useState(false);
+    const [outsideEmployment, setOutsideEmployment] = useState(false);
+    const [otherActivities, setOtherActivities] = useState(false);
+
     return (
         <div className="max-w-4xl mx-auto px-6 py-8">
             <h1 className="text-2xl font-bold text-center my-6">Disclosure of Any Potential Conflicts of Interest</h1>
@@ -39,45 +47,93 @@ const ConflictOfInterest = () => {
                             - Do you or any immediate family member have a financial interest in any competitor, client, or supplier of PaperRabbit Solutions Pvt. Ltd.?
                         </p>
                         <div className="flex space-x-4 text-sm text-slate-600">
-                            <label>
-                                <input type="checkbox" /> Yes
+                            <label className="flex gap-2">
+                                <input
+                                    type="checkbox"
+                                    checked={financialInterest}
+                                    onChange={(e) => setFinancialInterest(e.target.checked)}
+                                />
+                                Yes
                             </label>
-                            <label>
-                                <input type="checkbox" /> No
+                            <label className="flex gap-2">
+                                <input
+                                    type="checkbox"
+                                    checked={!financialInterest}
+                                    onChange={(e) => setFinancialInterest(!e.target.checked)}
+                                />
+                                No
                             </label>
                         </div>
-                        <p className="text-sm text-slate-600">- If yes, please provide details:</p>
-                        <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+
+                        {/* Input field visible only when "Yes" is selected */}
+                        {financialInterest && (
+                            <>
+                                <p className="text-sm text-slate-600">- If yes, please provide details:</p>
+                                <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+                            </>
+                        )}
 
                         <p className="text-sm text-slate-600">2. Personal Relationships:</p>
                         <p className="text-sm text-slate-600">
                             - Do you have any personal relationships with any competitor, client, or supplier of PaperRabbit Solutions Pvt. Ltd.?
                         </p>
                         <div className="flex space-x-4 text-sm text-slate-600">
-                            <label>
-                                <input type="checkbox" /> Yes
+                            <label className="flex gap-2">
+                                <input
+                                    type="checkbox"
+                                    checked={personalRelationship}
+                                    onChange={(e) => setPersonalRelationship(e.target.checked)}
+                                />
+                                Yes
                             </label>
-                            <label>
-                                <input type="checkbox" /> No
+                            <label className="flex gap-2">
+                                <input
+                                    type="checkbox"
+                                    checked={!personalRelationship}
+                                    onChange={(e) => setPersonalRelationship(!e.target.checked)}
+                                />
+                                No
                             </label>
                         </div>
-                        <p className="text-sm text-slate-600">- If yes, please provide details:</p>
-                        <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+
+                        {/* Input field visible only when "Yes" is selected */}
+                        {personalRelationship && (
+                            <>
+                                <p className="text-sm text-slate-600">- If yes, please provide details:</p>
+                                <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+                            </>
+                        )}
 
                         <p className="text-sm text-slate-600">3. Outside Employment:</p>
                         <p className="text-sm text-slate-600">
                             - Are you currently engaged in any outside employment or consultancy that might conflict with your duties at PaperRabbit Solutions Pvt. Ltd.?
                         </p>
                         <div className="flex space-x-4 text-sm text-slate-600">
-                            <label>
-                                <input type="checkbox" /> Yes
+                            <label className="flex gap-2">
+                                <input
+                                    type="checkbox"
+                                    checked={outsideEmployment}
+                                    onChange={(e) => setOutsideEmployment(e.target.checked)}
+                                />
+                                Yes
                             </label>
-                            <label>
-                                <input type="checkbox" /> No
+                            <label className="flex gap-2">
+                                <input
+                                    type="checkbox"
+                                    checked={!outsideEmployment}
+                                    onChange={(e) => setOutsideEmployment(!e.target.checked)}
+                                />
+                                No
                             </label>
                         </div>
-                        <p className="text-sm text-slate-600">- If yes, please provide details:</p>
-                        <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+
+                        {/* Input field visible only when "Yes" is selected */}
+                        {outsideEmployment && (
+                            <>
+                                <p className="text-sm text-slate-600">- If yes, please provide details:</p>
+                                <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+                            </>
+                        )}
                     </div>
                 </div>
 
@@ -88,15 +144,31 @@ const ConflictOfInterest = () => {
                         - Are there other activities or relationships that might impair your objectivity and loyalty to the Company?
                     </p>
                     <div className="flex space-x-4 text-sm text-slate-600">
-                        <label>
-                            <input type="checkbox" /> Yes
+                        <label className="flex gap-2">
+                            <input
+                                type="checkbox"
+                                checked={otherActivities}
+                                onChange={(e) => setOtherActivities(e.target.checked)}
+                            />
+                            Yes
                         </label>
-                        <label>
-                            <input type="checkbox" /> No
+                        <label className="flex gap-2">
+                            <input
+                                type="checkbox"
+                                checked={!otherActivities}
+                                onChange={(e) => setOtherActivities(!e.target.checked)}
+                            />
+                            No
                         </label>
                     </div>
-                    <p className="text-sm text-slate-600">- If yes, please provide details:</p>
-                    <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+
+                    {/* Input field visible only when "Yes" is selected */}
+                    {otherActivities && (
+                        <>
+                            <p className="text-sm text-slate-600">- If yes, please provide details:</p>
+                            <input type="text" className="border border-slate-300 rounded px-2 w-full" />
+                        </>
+                    )}
                 </div>
 
                 <div>
@@ -109,16 +181,15 @@ const ConflictOfInterest = () => {
 
                 <div>
                     <div className="flex gap-2 items-start">
-                        
-                        <input type="checkbox" name="" id="" className="w-8 h-8 " />
-                         <p className="text-sm font-semibold text-slate-600 ">I affirm that I have read and understood the Company’s policy on conflicts of interest and that the information provided in this Disclosure is accurate and complete to the best of my knowledge.</p>
+                        <input type="checkbox" name="" id="" className="w-8 h-8" />
+                        <p className="text-sm font-semibold text-slate-600">
+                            I affirm that I have read and understood the Company’s policy on conflicts of interest and that the information provided in this Disclosure is accurate and complete to the best of my knowledge.
+                        </p>
                     </div>
                 </div>
-
-            
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ConflictOfInterest;

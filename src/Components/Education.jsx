@@ -38,9 +38,9 @@ function Education({ educationInfo, setEducationInfo }) {
     <>
       <div className="my-12 w-[80%] mx-auto sm:text-sm lg:text-base">
         <h3 className="text-xl font-semibold my-4">Educational Background</h3>
-        <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <form className="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
           {/* Qualification */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <label htmlFor="qualification" className="text-sm font-medium">Highest Qualification</label>
             <select
               id="qualification"
@@ -56,7 +56,7 @@ function Education({ educationInfo, setEducationInfo }) {
           </div>
 
           {/* University */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <label htmlFor="university" className="text-sm font-medium">University/Institute</label>
             <input
               type="text"
@@ -68,7 +68,7 @@ function Education({ educationInfo, setEducationInfo }) {
           </div>
 
           {/* Year of Passing */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <label htmlFor="yearOfPassing" className="text-sm font-medium">Year of Passing</label>
             <input
               type="date"
@@ -80,7 +80,7 @@ function Education({ educationInfo, setEducationInfo }) {
           </div>
 
           {/* Certifications */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <label htmlFor="certifications" className="text-sm font-medium">Certifications/Courses</label>
             <input
               type="text"
@@ -94,7 +94,7 @@ function Education({ educationInfo, setEducationInfo }) {
           {/* Tech Domain and Skills (on the same row) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 col-span-2">
             {/* Domain */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="tech-domain" className="text-sm font-medium">Domain</label>
               <select
                 id="tech-domain"
@@ -114,7 +114,7 @@ function Education({ educationInfo, setEducationInfo }) {
             </div>
 
             {/* Skills */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <label htmlFor="skills" className="text-sm font-medium">Skills</label>
               <div className="flex items-center gap-2">
                 <input

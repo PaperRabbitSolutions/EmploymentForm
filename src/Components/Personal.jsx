@@ -1,6 +1,7 @@
 import React from "react";
 
 function Personal({ personalInfo, setPersonalInfo }) {
+  const fullName=personalInfo.First_Name+" "+personalInfo.Last_Name
   const handleChange = (e) => {
     const { id, value, type, name, checked } = e.target;
 

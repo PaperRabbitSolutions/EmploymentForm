@@ -14,10 +14,10 @@ function Contact({ contactInfo, setContactInfo }) {
     <>
       <div className="my-12 w-[80%] mx-auto sm:text-sm lg:text-base">
         <h2 className="font-semibold text-xl my-4 underline">Contact Details:</h2>
-        <form className="space-y-2">
+        <form className="space-y-4">
           {/* Permanent Address in its own row */}
          <div className='flex flex-wrap gap-6'>
-         <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+         <div className="flex-1 min-w-[200px] flex flex-col gap-2">
             <label htmlFor="permanent" className="text-sm font-medium">Permanent Address</label>
             <textarea id="permanent"
               name="Permanent_Address"
@@ -27,7 +27,7 @@ function Contact({ contactInfo, setContactInfo }) {
           </div>
 
           {/* Alternate Address in its own row */}
-          <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+          <div className="flex-1 min-w-[200px] flex flex-col gap-2">
             <label htmlFor="current" className="text-sm font-medium">Alternate Address</label>
             <textarea id="current"
               name="Current_Address"
@@ -39,7 +39,7 @@ function Contact({ contactInfo, setContactInfo }) {
 
           {/* Mobile and Alternate Numbers on the same line */}
           <div className="flex flex-wrap gap-6">
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="mobile" className="text-sm font-medium">Mobile No.</label>
               <input
                 type="text"  // Use text to avoid issues with numeric input
@@ -50,7 +50,7 @@ function Contact({ contactInfo, setContactInfo }) {
                 className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
               />
             </div>
-            <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+            <div className="flex-1 min-w-[200px] flex flex-col gap-2">
               <label htmlFor="alternate" className="text-sm font-medium">Alternate No.</label>
               <input
                 type="text"  // Use text for alternate numbers as well
@@ -62,7 +62,7 @@ function Contact({ contactInfo, setContactInfo }) {
               />
             </div>
 
-            <div className="flex-1 flex min-w-[200px] flex-col gap-1">
+            <div className="flex-1 flex min-w-[200px] flex-col gap-2">
               <label htmlFor="email" className="text-sm font-medium">Email</label>
               <input
                 type="email"
@@ -81,7 +81,7 @@ function Contact({ contactInfo, setContactInfo }) {
             <p className='text-xs md:text-sm '>Please share your profile links in the perticular input fields *</p>
             
             <br /><div className="flex flex-wrap gap-6 ">
-              <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+              <div className="flex-1 min-w-[200px] flex flex-col gap-2">
                 <label htmlFor="linkedin" className="text-sm font-medium">LinkedIn</label>
                 <input
                   type="text"
@@ -92,7 +92,7 @@ function Contact({ contactInfo, setContactInfo }) {
                   className="px-2 py-1 w-full border-[1px] rounded-lg outline-none"
                 />
               </div>
-              <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+              <div className="flex-1 min-w-[200px] flex flex-col gap-2">
                 <label htmlFor="github" className="text-sm font-medium">Github</label>
                 <input
                   type="text"
@@ -104,7 +104,7 @@ function Contact({ contactInfo, setContactInfo }) {
                 />
               </div>
 
-              <div className="flex-1 flex min-w-[200px] flex-col gap-1">
+              <div className="flex-1 flex min-w-[200px] flex-col gap-2">
                 <label htmlFor="instagram" className="text-sm font-medium">Instagram</label>
                 <input
                   type="text"
@@ -118,7 +118,7 @@ function Contact({ contactInfo, setContactInfo }) {
             </div>
 
             <div className="flex flex-wrap gap-6">
-              <div className="flex-1 min-w-[200px] flex flex-col gap-1">
+              <div className="flex-1 min-w-[200px] flex flex-col gap-2">
                 <label htmlFor="behance" className="text-sm  font-medium">Behance</label>
                 <input
                   type="text"
@@ -141,7 +141,7 @@ function Contact({ contactInfo, setContactInfo }) {
                 />
               </div>
 
-              <div className="flex-1 flex min-w-[200px] flex-col gap-1">
+              <div className="flex-1 flex min-w-[200px] flex-col gap-2">
                 <label htmlFor="others" className="text-sm font-medium">Others</label>
                 <input
                   type="text"
