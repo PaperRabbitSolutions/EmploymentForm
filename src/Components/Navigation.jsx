@@ -31,7 +31,7 @@ const Navigation = ({ isDisable,generatePDF }) => {
   };
 
   return (
-    <div className="w-full max-w-[900px] bg-white px-10 py-10 bottom-0 fixed flex items-center justify-between">
+    <div className="w-full  bg-gradient-to-t from-white px-10 py-10 flex items-center justify-center gap-[70%]">
       {/* Previous Button */}
       <button
         onClick={goToPrevious}

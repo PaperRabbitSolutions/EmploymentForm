@@ -17,6 +17,7 @@ import Header from "./Components/Header";
 import Navigation from "./Components/Navigation";
 import generateTable from "./utility/generateTable";
 import Routing from "./Components/Routing";
+import DataProtectionAgreement from "./utility/DataProtectionAgreement.js"
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -282,7 +283,7 @@ function App() {
   // Function to handle form submission and generate PDF
   const generatePDF = () => {
     if (isDisable) {
-      // You can handle errors here if needed
+      // Handle errors here if needed
       console.log(errors);
     }
   
@@ -301,20 +302,23 @@ function App() {
       employmentDetails,
     };
   
-    // Adding form data to PDF with autoTable
-    doc.text("Employment Form Details:", 10, 10);
-  
-    let y = 20; // Starting Y position for text in the PDF
+    // Adding header image (if required) and footer image (if required)
+    // doc.addImage(headerImage, 'JPEG', 10, 10, 180, 30); // Example
   
     // Generate tables for each section
-    y = generateTable("Personal Information", formData.personalInfo, doc, y);
-    y = generateTable("Contact Information", formData.contactInfo, doc, y);
-    y = generateTable("Education Information", formData.educationInfo, doc, y);
-    y = generateTable("Health Information", formData.healthInfo, doc, y);
-    y = generateTable("Bank Information", formData.bankInfo, doc, y);
-    y = generateTable("Documents", formData.uploadDocsInfo, doc, y);
-    y = generateTable("Declarations", formData.declarations, doc, y);
-    y = generateTable("Employee Details", formData.employmentDetails, doc, y);
+    // doc.text("Employment Form Details:", 10, 10); // Title on the first page
+  
+    generateTable("Personal Information", formData.personalInfo, doc);
+    generateTable("Contact Information", formData.contactInfo, doc);
+    generateTable("Education Information", formData.educationInfo, doc);
+    generateTable("Health Information", formData.healthInfo, doc);
+    generateTable("Bank Information", formData.bankInfo, doc);
+    generateTable("Documents", formData.uploadDocsInfo, doc);
+    generateTable("Declarations", formData.declarations, doc);
+    generateTable("Employee Details", formData.employmentDetails, doc);
+  
+    // Optionally, you can add footer image at the end
+    // doc.addImage(footerImage, 'JPEG', 10, 270, 180, 20); // Example
   
     doc.save("employment_form.pdf");
   };
