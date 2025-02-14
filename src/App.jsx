@@ -18,6 +18,12 @@ import Navigation from "./Components/Navigation";
 import generateTable from "./utility/generateTable";
 import Routing from "./Components/Routing";
 import DataProtectionAgreement from "./utility/DataProtectionAgreement.js"
+import generateConflictOfInterestPDF from "./utility/conflictOfInterestAgreement.js";
+import generateAntiBriberyPolicyPDF from   "./utility/generateAntiBribaryAgreement" ;
+import generateCompanyPolicyPDF from   "./utility/generateCompanyPolicy.js" ;
+import generateNdaAgreement from   "./utility/generateNdaAgreement.js" ;
+import generateEmployeContract from "./utility/generateEmployeContract.js";
+import generateCodeOfConductPDF from  "./utility/generateCodeOfConduct.js";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -319,7 +325,13 @@ function App() {
   
     // Optionally, you can add footer image at the end
     // doc.addImage(footerImage, 'JPEG', 10, 270, 180, 20); // Example
-  
+  DataProtectionAgreement(doc);
+  generateConflictOfInterestPDF(doc);
+  generateAntiBriberyPolicyPDF(doc);
+  generateCompanyPolicyPDF(doc);
+  generateNdaAgreement(doc);
+  generateEmployeContract(doc);
+  generateCodeOfConductPDF(doc);
     doc.save("employment_form.pdf");
   };
   
