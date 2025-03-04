@@ -6,20 +6,19 @@ function generateCodeOfConductPDF(doc) {
     doc.addPage();
     const pageWidth = doc.internal.pageSize.width;
     const pageHeight = doc.internal.pageSize.height;
-    const margin = 15;
-    let y = margin + 30;
+    const margin = 10; // Equal margins on left and right
+    const contentWidth = pageWidth - 2 * margin; // Ensuring content stays within boundaries
+    let y = 65; // Starting position after the header
 
     const addHeader = () => {
-        doc.addImage(logo, "PNG", 10, 10, 30, 30);
+        doc.addImage(logo, "PNG", 10, 10, 30, 38);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(16);
-        const titleText = "Company Code of Conduct";
-        const textWidth = doc.getTextWidth(titleText);
-        doc.text(titleText, (pageWidth - textWidth) / 2, 20);
+        doc.text("Company Code of Conduct", margin, 55);
     };
 
     const addFooter = () => {
-        doc.addImage(footer, "PNG", 0, pageHeight - 20, pageWidth, 20);
+        doc.addImage(footer, "PNG", 0, pageHeight - 29, pageWidth, 29);
     };
 
     function checkPageEnd(lineHeight = 10) {
@@ -27,12 +26,12 @@ function generateCodeOfConductPDF(doc) {
             addFooter();
             doc.addPage();
             addHeader();
-            y = margin + 30;
+            y = 65; // Reset y for the new page
         }
     }
 
     addHeader();
-    
+
     const content = [
         { title: "1. Professionalism and Integrity:", isBold: true },
         { text: "• Conduct yourself with honesty, integrity, and respect in all interactions with colleagues, clients, and stakeholders." },
@@ -73,37 +72,90 @@ function generateCodeOfConductPDF(doc) {
 
         { title: "10. Continuous Improvement:", isBold: true },
         { text: "• Embrace a culture of learning and continuous improvement, seeking opportunities for personal and professional growth and development." },
-
-        { text: "By adhering to this Code of Conduct, you demonstrate your commitment to the success and reputation of PaperRabbit Solutions Pvt Ltd. Violations of this Code may result in disciplinary action, including termination of employment." },
-
-        { title: "Thank you for your dedication to upholding these principles and contributing to a positive and productive workplace environment.", isBold: true },
-
-        { title: "PaperRabbit Solutions Pvt Ltd Management", isBold: true },
-        { title: "[Employee Name]", isBold: true },
-        { text: "By: _____________________________ (Employee Signature)" }
     ];
 
     doc.setFont("helvetica");
 
-    content.forEach(section => {
+    content.forEach((section) => {
         checkPageEnd();
+
         if (section.isBold) {
-            doc.setFontSize(14);
+            doc.setFontSize(12);
             doc.setFont("helvetica", "bold");
-            doc.text(section.title, margin, y);
-            y += 8;
+            doc.text(section.title, margin + 5, y);
+            y += 4; // **Reduced space after the section title**
         } else {
-            doc.setFontSize(11);
+            doc.setFontSize(10);
             doc.setFont("helvetica", "normal");
-            const splitText = doc.splitTextToSize(section.text, pageWidth - 2 * margin);
-            doc.text(splitText, margin, y);
-            y += splitText.length * 5;
+
+            const splitText = doc.splitTextToSize(section.text, contentWidth);
+            splitText.forEach((line) => {
+                checkPageEnd(7);
+                doc.text(line, margin + 5, y);
+                y += 4; // **Uniform spacing between bullet points**
+            });
         }
-        y += 5;
+
+        y += 4; // **Reduced spacing after section ends**
+    });
+
+    // Adding extra space before the final section (Thank You Part)
+    y += 8; // **Slight extra spacing to separate from the above content**
+
+    const finalSection = [
+        { text: "By adhering to this Code of Conduct, you demonstrate your commitment to the success and reputation of PaperRabbit Solutions Pvt Ltd. Violations of this Code may result in disciplinary action, including termination of employment." },
+        { title: "Thank you for your dedication to upholding these principles and contributing to a positive and productive workplace environment.", isBold: true },
+        { title: "PaperRabbit Solutions Pvt Ltd Management", isBold: true },
+    ];
+
+    finalSection.forEach((section) => {
+        checkPageEnd();
+
+        if (section.isBold) {
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text(section.title, margin + 5, y);
+            y += 5; // **Smaller spacing after bold titles for better readability**
+        } else {
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+
+            const splitText = doc.splitTextToSize(section.text, contentWidth);
+            splitText.forEach((line) => {
+                checkPageEnd(7);
+                doc.text(line, margin + 5, y);
+                y += 5; // **Normal spacing between lines**
+            });
+        }
+
+        y += 4; // **Consistent spacing between sections**
+    });
+
+    // **Adding extra space for signature section**
+    y += 20; // **Enough space for the employee signature**
+
+    const signatureSection = [
+        
+        { text: "By: _____________________________ (Employee Signature along with name and date)" },
+    ];
+
+    signatureSection.forEach((section) => {
+        checkPageEnd();
+
+        if (section.isBold) {
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            doc.text(section.title, margin + 5, y);
+            y += 8; // **More space for clarity**
+        } else {
+            doc.setFontSize(10);
+            doc.setFont("helvetica", "normal");
+            doc.text(section.text, margin + 5, y);
+            y += 5;
+        }
     });
 
     addFooter();
-   
 }
 
 export default generateCodeOfConductPDF;

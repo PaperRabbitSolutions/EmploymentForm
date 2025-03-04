@@ -3,13 +3,13 @@ import logo from "../assets/logo2.png"; // Company Logo
 import footer from "../assets/footer.png"; // Footer Image
 
 const addHeader = (doc) => {
-  doc.addImage(logo, "PNG", 10, 10, 30, 38);
+  doc.addImage(logo, "PNG", 10, 10, 30, 38); // Logo at the top
   doc.setFont("helvetica", "bold");
   doc.setFontSize(16);
-  doc.text("Anti-Bribery Policy Agreement", 10, 58);
+  doc.text("Anti-Bribery Policy Agreement", 10, 58); // Adjusted title position
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text("Employee Agreement to Comply with Anti-Bribery Regulations", 10, 66);
+  doc.text("Employee Agreement to Comply with Anti-Bribery Regulations", 10, 63);
 };
 
 const addFooter = (doc) => {
@@ -75,20 +75,20 @@ const addAgreementSections = (doc, startY) => {
   let yPos = startY;
   const pageHeight = doc.internal.pageSize.height;
   const marginBottom = 40;
-  const lineHeight = 6;
+  const lineHeight = 7; // Adjusted line height for better readability
 
   sections.forEach((section) => {
     // Check if there's space for title; if not, add a new page
-    // if (yPos + lineHeight > pageHeight - marginBottom) {
-    //   addFooter(doc);
-    //   doc.addPage();
-    //   addHeader(doc);
-    //   yPos = 75;
-    // }
+    if (yPos + lineHeight > pageHeight - marginBottom) {
+      addFooter(doc);
+      doc.addPage();
+      addHeader(doc);
+      yPos = 75; // Reset position on new page
+    }
 
     // Add Section Title
     doc.setFont("helvetica", "bold");
-    doc.text(section.title, 10, yPos);
+    doc.text(section.title, 18, yPos);
     yPos += lineHeight;
 
     // Wrap text dynamically
@@ -102,9 +102,11 @@ const addAgreementSections = (doc, startY) => {
         addHeader(doc);
         yPos = 75;
       }
-      doc.text(line, 10, yPos);
+      doc.text(line, 15, yPos);
       yPos += lineHeight;
     });
+
+    yPos += 5; // Extra spacing between sections
   });
 
   addFooter(doc); // Ensure footer is added to the last page
@@ -113,7 +115,7 @@ const addAgreementSections = (doc, startY) => {
 const AntiBriberyPolicyAgreement = (doc) => {
   doc.addPage();
   addHeader(doc);
-  addAgreementSections(doc, 75);
+  addAgreementSections(doc, 70); // Adjusted starting position for "Purpose"
 };
 
 export default AntiBriberyPolicyAgreement;

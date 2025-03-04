@@ -76,11 +76,11 @@ const addAgreementSections = (doc, startY) => {
   sections.forEach((section) => {
 
     doc.setFont("helvetica", "bold");
-    doc.text(section.title, 10, yPos);
+    doc.text(section.title, 15, yPos);
     yPos += 5;
 
     doc.setFont("helvetica", "normal");
-    doc.text(section.content, 8, yPos, { maxWidth: 180 });
+    doc.text(section.content, 15, yPos, { maxWidth: 180 });
     yPos += 15; // Increased spacing between sections
   });
 

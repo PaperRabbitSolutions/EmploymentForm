@@ -4,32 +4,34 @@ import footer from "../assets/footer.png"; // Footer Image
 
 const generateNdaPdf = (doc) => {
     doc.addPage();
+    const pageWidth = doc.internal.pageSize.width;
+    const pageHeight = doc.internal.pageSize.height;
     const margin = 15;
-    let y = 75; // Start content after header
+    const headerHeight = 50; // Space for header
+    let y = margin + headerHeight + 5; // Start content with adequate spacing
 
     const addHeader = () => {
         doc.addImage(logo, "PNG", 10, 10, 30, 38);
         doc.setFont("helvetica", "bold");
-        doc.setFontSize(16);
+        doc.setFontSize(14);
         const titleText = "Non-Disclosure Agreement (NDA)";
-        const textWidth = doc.getTextWidth(titleText);
-        doc.text(titleText, (doc.internal.pageSize.width - textWidth) / 2, 25);
+        // const textWidth = doc.getTextWidth(titleText);
+        doc.text(titleText, 10, 60);
     };
 
     const addFooter = () => {
-        const pageWidth = doc.internal.pageSize.width;
-        const pageHeight = doc.internal.pageSize.height;
-        doc.addImage(footer, "PNG", 0, pageHeight - 25, pageWidth, 20);
+        const footerHeight = 25;
+        doc.addImage(footer, "PNG", 0, pageHeight - footerHeight, pageWidth, footerHeight);
     };
 
-    const checkPageEnd = (lineHeight = 10) => {
-        if (y + lineHeight > doc.internal.pageSize.height - 30) {
+    function checkPageEnd(lineHeight = 10) {
+        if (y + lineHeight > pageHeight - 40) {
             addFooter();
             doc.addPage();
             addHeader();
-            y = 75;
+            y = margin + headerHeight + 5; // Reset position after header
         }
-    };
+    }
 
     addHeader();
 
@@ -42,30 +44,34 @@ const generateNdaPdf = (doc) => {
         { title: "5. Term", text: "This Agreement shall remain in effect as long as the Employee is employed by the Company and for a period of [5 years] post-employment." },
         { title: "6. Remedies", text: "Any breach of this Agreement may cause irreparable harm to the Company. Legal action may be pursued." },
         { title: "7. Miscellaneous", text: "This Agreement is governed by the laws of India. No modification is valid unless in writing and signed by both parties." },
-        { title: "Acknowledgment", text: "☐ The Employee acknowledges that they have read and understood this Agreement and agree to be bound by its terms." }
+        { title: "Acknowledgment", text: "The Employee acknowledges that they have read and understood this Agreement and agree to be bound by its terms." }
     ];
 
     doc.setFont("helvetica");
+
     content.forEach(section => {
         checkPageEnd();
+
         if (section.title) {
-            doc.setFontSize(14);
+            doc.setFontSize(12);
             doc.setFont("helvetica", "bold");
             doc.text(section.title, margin, y);
-            y += 8;
+            y += 5;
         }
+
         if (section.text) {
-            doc.setFontSize(11);
+            checkPageEnd();
+            doc.setFontSize(10);
             doc.setFont("helvetica", "normal");
-            const splitText = doc.splitTextToSize(section.text, doc.internal.pageSize.width - 2 * margin);
+            const splitText = doc.splitTextToSize(section.text, pageWidth - 2 * margin);
             doc.text(splitText, margin, y);
-            y += splitText.length * 5;
+            y += splitText.length * 4.5; // Optimized text spacing
         }
-        y += 10;
+
+        y += 5; // Minimal space between sections
     });
 
     addFooter();
-   
 };
 
 export default generateNdaPdf;
