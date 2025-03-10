@@ -136,7 +136,7 @@ function generateCodeOfConductPDF(doc) {
 
     const signatureSection = [
         
-        { text: "By: _____________________________ (Employee Signature along with name and date)" },
+        { text: "By: ______________________________________ (Employee Signature along with name and date)" },
     ];
 
     signatureSection.forEach((section) => {

@@ -48,7 +48,14 @@ function generateCompanyPolicyPDF(doc) {
         { title: "3. Code of Conduct", isBold: true },
         { title: "3.1. Purpose", text: "The Code of Conduct sets out the standards of behavior expected from employees to ensure a respectful, ethical, and professional work environment.", isSubBold: true },
         { title: "3.2. Professionalism", text: "- Employees are expected to perform their duties with integrity and honesty.\n\n- Respect for colleagues, clients, and stakeholders is mandatory.", isSubBold: true },
+
+        // **Adding space before the signature section**
+        { title: "", text: "", isSubBold: true }, // Empty section for spacing
+        { title: "", text: "", isSubBold: true }, // Additional empty space
+        
         { title: "Acknowledgment", text: "I hereby acknowledge and accept all terms and conditions outlined in the company policies and guidelines mentioned above.", isSubBold: true },
+        
+        { title: "", text: "", isSubBold: true }, // Empty section for spacing
         { title: "Signature:__________________                                                         Date: __________________" }
     ];
 
@@ -58,7 +65,6 @@ function generateCompanyPolicyPDF(doc) {
         checkPageEnd();
 
         if (section.isBold) {
-            // y += 3; // Extra space before new section
             doc.setFontSize(12);
             doc.setFont("helvetica", "bold");
         } else if (section.isSubBold) {
@@ -67,8 +73,10 @@ function generateCompanyPolicyPDF(doc) {
             doc.setFont("helvetica", "bold");
         }
 
-        doc.text(section.title, contentMargin, y);
-        y += 6;
+        if (section.title !== "") {
+            doc.text(section.title, contentMargin, y);
+            y += 6;
+        }
 
         if (section.text) {
             checkPageEnd();
@@ -78,7 +86,7 @@ function generateCompanyPolicyPDF(doc) {
             y += splitText.length * 5; // Increased spacing between bullet points
         }
 
-        y += 2; // Extra space before next heading/subheading
+        y += 4; // Extra space before next heading/subheading
     });
 
     addFooter();

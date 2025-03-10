@@ -9,8 +9,6 @@ const addHeader = (doc) => {
 
     // Title positioned below the logo with a gap
     const titleText = "Disclosure of Any Potential Conflicts of Interest";
-    // const pageWidth = doc.internal.pageSize.width;
-    // const textWidth = doc.getTextWidth(titleText);
     doc.text(titleText, 10, 55);
 };
 
@@ -22,15 +20,15 @@ const addFooter = (doc) => {
 };
 
 const addTextWithWrap = (doc, text, x, y, maxWidth, lineHeight) => {
-    doc.setFontSize(10); // Ensure font size consistency
+    doc.setFontSize(10);
     const lines = doc.splitTextToSize(text, maxWidth);
     lines.forEach((line) => {
         if (y + lineHeight > doc.internal.pageSize.height - 40) {
             addFooter(doc);
             doc.addPage();
             addHeader(doc);
-            y = 75;
-            doc.setFontSize(10); // Reset font size after adding a new page
+            y = 65; // Reduced space after new page header
+            doc.setFontSize(10);
         }
         doc.text(line, x, y);
         y += lineHeight;
@@ -42,7 +40,7 @@ const generateConflictOfInterestPDF = (doc) => {
     doc.addPage();
     addHeader(doc);
 
-    let yPos = 65; // Adjusted for proper spacing after logo
+    let yPos = 65; // Reduced space after header
     const maxWidth = 170;
     const lineHeight = 6;
 
@@ -56,16 +54,16 @@ const generateConflictOfInterestPDF = (doc) => {
             addFooter(doc);
             doc.addPage();
             addHeader(doc);
-            yPos = 75;
+            yPos = 65; // Reduced space after header
         }
         doc.setFont("helvetica", "bold");
         doc.setFontSize(12);
         doc.text(title, 12, yPos);
-        yPos += lineHeight;
+        yPos += 8; // Increased spacing between subheading and content
         doc.setFont("helvetica", "normal");
         doc.setFontSize(10);
         yPos = addTextWithWrap(doc, content, 12, yPos, maxWidth, lineHeight);
-        yPos += 5;
+        yPos += 8; // Added gap before next section
     });
 
     // Bullet Points
@@ -82,7 +80,7 @@ const generateConflictOfInterestPDF = (doc) => {
             addFooter(doc);
             doc.addPage();
             addHeader(doc);
-            yPos = 70;
+            yPos = 65;
         }
         doc.text("• " + point, 12, yPos);
         yPos += lineHeight;
@@ -93,14 +91,14 @@ const generateConflictOfInterestPDF = (doc) => {
         addFooter(doc);
         doc.addPage();
         addHeader(doc);
-        yPos = 70;
+        yPos = 65;
     }
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(12); // Ensure font size remains consistent for headings
-    doc.text("Employee Declaration", 12, yPos+5);
+    doc.setFontSize(12);
+    doc.text("Employee Declaration", 12, yPos);
+    yPos += 8; // Added space between heading and content
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    yPos += 10;
     yPos = addTextWithWrap(doc, "I, [Employee Name], at this moment, disclose the following potential conflicts of interest:", 12, yPos, maxWidth, lineHeight);
 
     // Declaration Sections with Checkboxes
@@ -116,14 +114,15 @@ const generateConflictOfInterestPDF = (doc) => {
             addFooter(doc);
             doc.addPage();
             addHeader(doc);
-            yPos = 75;
+            yPos = 65;
         }
         doc.setFont("helvetica", "bold");
-        doc.setFontSize(12); // Ensuring heading size remains 12 for all sections
+        doc.setFontSize(12);
         doc.text(section, 12, yPos);
+        yPos += 8; // Added space before content
         doc.setFont("helvetica", "normal");
         doc.setFontSize(10);
-        yPos = addTextWithWrap(doc, "- Do you or any immediate family member have a financial interest in any competitor, client, or supplier of PaperRabbit Solutions Pvt. Ltd.?", 16, yPos + 5, maxWidth - 10, lineHeight);
+        yPos = addTextWithWrap(doc, "- Do you or any immediate family member have a financial interest in any competitor, client, or supplier of PaperRabbit Solutions Pvt. Ltd.?", 16, yPos, maxWidth - 10, lineHeight);
         doc.rect(16, yPos + 4, 4, 4);
         doc.text("Yes", 24, yPos + 7);
         doc.rect(50, yPos + 4, 4, 4);
@@ -136,24 +135,33 @@ const generateConflictOfInterestPDF = (doc) => {
         addFooter(doc);
         doc.addPage();
         addHeader(doc);
-        yPos = 75;
+        yPos = 65;
     }
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
     doc.text("Duty to Update", 12, yPos);
+    yPos += 8; // Added space between subheading and content
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    yPos = addTextWithWrap(doc, "I understand that it is my ongoing responsibility to promptly disclose any potential conflicts of interest that may arise during my employment with PaperRabbit Solutions Pvt. Ltd.", 15, yPos + 5, maxWidth, lineHeight);
+    yPos = addTextWithWrap(doc, "I understand that it is my ongoing responsibility to promptly disclose any potential conflicts of interest that may arise during my employment with PaperRabbit Solutions Pvt. Ltd.", 15, yPos, maxWidth, lineHeight);
 
-    // Final Confirmation Checkbox
-    if (yPos + 20 > doc.internal.pageSize.height - 40) {
+    // Signature Section
+    if (yPos + 40 > doc.internal.pageSize.height - 40) {
         addFooter(doc);
         doc.addPage();
         addHeader(doc);
-        yPos = 75;
+        yPos = 65;
     }
-    // doc.rect(12, yPos, 4, 4);
-    yPos = addTextWithWrap(doc, "I affirm that I have read and understood the Company’s policy on conflicts of interest and that the information provided in this Disclosure is accurate and complete to the best of my knowledge.", 15, yPos + 3, maxWidth - 10, lineHeight);
+
+    yPos += 30; // Leave space for signing
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("Signature:", 12, yPos);
+    doc.line(40, yPos, 120, yPos); // Line for signature
+
+    doc.text("Date:", 140, yPos);
+    doc.line(155, yPos, 190, yPos); // Line for date
 
     // Ensure footer is added to the last page
     addFooter(doc);
