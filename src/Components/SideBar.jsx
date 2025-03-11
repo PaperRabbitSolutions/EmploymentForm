@@ -24,7 +24,7 @@ const SideBar = () => {
   ];
 
   return (
-    <div className="py-4 flex justify-center gap-12 text-slate-600">
+    <div className="py-4 flex justify-center gap-3 sm:gap-4 md:gap-8 lg:gap-12 text-slate-600">
       {[
         { icon: <FaUser />, to: "/", message: hoverMessages[0] },
         { icon: <FaPhoneAlt />, to: "/contact", message: hoverMessages[1] },
@@ -37,7 +37,7 @@ const SideBar = () => {
       ].map((item, index) => (
         <span
           key={index}
-          className={`relative p-3 rounded-full text-base md:text-xl lg:text-lg ${
+          className={`relative p-2 lg:p-3 rounded-full text-base md:text-xl lg:text-lg ${
             // Apply background color conditionally
             window.location.pathname === item.to
               ? "bg-blue-500"

@@ -72,7 +72,7 @@ const generateTable = (sectionTitle, sectionData, doc) => {
     },
     columnStyles: {
       0: { cellWidth: 50 },
-      1: { cellWidth: 140 },
+      1: { cellWidth: 130 },
     },
     didDrawCell: (data) => {
       const { cell } = data;
@@ -80,17 +80,17 @@ const generateTable = (sectionTitle, sectionData, doc) => {
       const y = cell.y;
       const width = cell.width;
       const height = cell.height;
-      const padding = 1.5;
+      const padding = 1;
       const borderColor = [200, 200, 200]; // Light border color
 
       if (data.section === "head") {
         // Headers: Black background with white text and light border
         doc.setFillColor(0, 0, 0);
-        doc.roundedRect(x, y, width, height, 6, 6, "F");
+        doc.roundedRect(x, y, width, height, 2, 2, "F");
 
         doc.setDrawColor(...borderColor);
         doc.setLineWidth(0.3); // Thin border
-        doc.roundedRect(x, y, width, height, 6, 6, "S");
+        doc.roundedRect(x, y, width, height, 2, 2, "S");
 
         doc.setTextColor(255, 255, 255);
         doc.text(cell.text, x + 5, y + height / 2 + 2);
@@ -99,14 +99,14 @@ const generateTable = (sectionTitle, sectionData, doc) => {
         const grayColor = [240, 240, 240];
 
         doc.setFillColor(...grayColor);
-        doc.roundedRect(x, y + 1, width, height - 2, 6, 6, "F"); // Added 1px gap between rows
+        doc.roundedRect(x, y , width, height - 2, 2, 2, "F"); // Added 1px gap between rows
 
         doc.setDrawColor(...borderColor);
         doc.setLineWidth(0.3); // Thin border
-        doc.roundedRect(x, y + 1, width, height - 2, 6, 6, "S"); // Added 1px gap between rows
+        doc.roundedRect(x, y , width, height - 2, 2, 2, "S"); // Added 1px gap between rows
 
         doc.setTextColor(0, 0, 0);
-        doc.text(cell.text, x + 5, y + height / 2 + 2);
+        doc.text(cell.text, x + 5, y + height / 2 + 1);
       }
     },
   });

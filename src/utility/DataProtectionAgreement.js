@@ -65,24 +65,25 @@ const addAgreementSections = (doc, startY) => {
       content:
         "I confirm that I have read, understood, and agree to comply with the above terms and conditions regarding data protection.",
     },
-    {
-      title: "Signature: _____________________:                                                        Date: _________________",
-      content:""
-       ,
-    },
   ];
 
   let yPos = startY;
   sections.forEach((section) => {
-
     doc.setFont("helvetica", "bold");
-    doc.text(section.title, 15, yPos);
+    doc.text(section.title, 18, yPos);
     yPos += 5;
 
     doc.setFont("helvetica", "normal");
     doc.text(section.content, 15, yPos, { maxWidth: 180 });
     yPos += 15; // Increased spacing between sections
   });
+
+  // Add extra space before the signature section
+  yPos += 20; // Adjust this value as needed to create more space
+
+  // Signature section
+  doc.setFont("helvetica", "bold");
+  doc.text("Signature: _____________________                                                        Date: _________________", 18, yPos);
 
   return yPos;
 };
@@ -99,7 +100,6 @@ const DataProtectionAgreement = (doc) => {
   addHeader(doc);
   let contentStartY = 75; // Adjusted content position after increased logo size
   const newY = addAgreementSections(doc, contentStartY);
-  // addConfirmationCheckbox(doc, newY);
   addFooter(doc);
 };
 

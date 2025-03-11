@@ -48,14 +48,15 @@ function generateCompanyPolicyPDF(doc) {
         { title: "3. Code of Conduct", isBold: true },
         { title: "3.1. Purpose", text: "The Code of Conduct sets out the standards of behavior expected from employees to ensure a respectful, ethical, and professional work environment.", isSubBold: true },
         { title: "3.2. Professionalism", text: "- Employees are expected to perform their duties with integrity and honesty.\n\n- Respect for colleagues, clients, and stakeholders is mandatory.", isSubBold: true },
-
-        // **Adding space before the signature section**
-        { title: "", text: "", isSubBold: true }, // Empty section for spacing
-        { title: "", text: "", isSubBold: true }, // Additional empty space
         
         { title: "Acknowledgment", text: "I hereby acknowledge and accept all terms and conditions outlined in the company policies and guidelines mentioned above.", isSubBold: true },
         
-        { title: "", text: "", isSubBold: true }, // Empty section for spacing
+        // **Adding extra space before the signature section**
+        { title: "", text: "", isSubBold: true }, // Empty space
+        { title: "", text: "", isSubBold: true }, // More empty space
+        { title: "", text: "", isSubBold: true }, // More empty space
+        { title: "", text: "", isSubBold: true }, // More empty space
+        
         { title: "Signature:__________________                                                         Date: __________________" }
     ];
 
