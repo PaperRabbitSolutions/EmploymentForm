@@ -308,20 +308,30 @@ function App() {
       employmentDetails,
     };
   
+    let isFirstTable = true; // Track if it's the first table
+    let combinedEducationHealth = false;
+
+    const generateTableWithCheck = (title, data) => {
+      if (Object.keys(data).length > 0) {  // Ensure section has data before adding
+        generateTable(title, data, doc, isFirstTable);
+        isFirstTable = false; // Set to false after first table is added
+      }
+    };
+
     // Adding header image (if required) and footer image (if required)
     // doc.addImage(headerImage, 'JPEG', 10, 10, 180, 30); // Example
   
     // Generate tables for each section
     // doc.text("Employment Form Details:", 10, 10); // Title on the first page
   
-    generateTable("Personal Information", formData.personalInfo, doc);
-    generateTable("Contact Information", formData.contactInfo, doc);
-    generateTable("Education Information", formData.educationInfo, doc);
-    generateTable("Health Information", formData.healthInfo, doc);
-    generateTable("Bank Information", formData.bankInfo, doc);
-    generateTable("Documents", formData.uploadDocsInfo, doc);
-    generateTable("Declarations", formData.declarations, doc);
-    generateTable("Employee Details", formData.employmentDetails, doc);
+    generateTableWithCheck("Personal Information", formData.personalInfo, doc);
+    generateTableWithCheck("Contact Information", formData.contactInfo, doc);
+    generateTableWithCheck("Education Information", formData.educationInfo, doc);
+    generateTableWithCheck("Health Information", formData.healthInfo, doc);
+    generateTableWithCheck("Bank Information", formData.bankInfo, doc);
+    generateTableWithCheck("Documents", formData.uploadDocsInfo, doc);
+    generateTableWithCheck("Declarations", formData.declarations, doc);
+    generateTableWithCheck("Employee Details", formData.employmentDetails, doc);
   
     // Optionally, you can add footer image at the end
     // doc.addImage(footerImage, 'JPEG', 10, 270, 180, 20); // Example

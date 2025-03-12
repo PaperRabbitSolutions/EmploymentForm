@@ -1,9 +1,10 @@
 import logo from "../assets/logo2.png";
 import footer from "../assets/footer.png";
 
-const generateTable = (sectionTitle, sectionData, doc) => {
-  doc.addPage();
-
+const generateTable = (sectionTitle, sectionData, doc,isFirstPage) => {
+  if (!isFirstPage) {
+    doc.addPage(); // Add a new page only after the first table
+  }
   // Add logo
   doc.addImage(logo, "PNG", 10, 10, 30, 38);
 
@@ -28,6 +29,12 @@ const generateTable = (sectionTitle, sectionData, doc) => {
   const rows = Object.entries(sectionData)
     .filter(([_, value]) => value !== false)
     .map(([field, value]) => {
+      // Convert field names to proper format
+      const formattedField = field
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+        .replace(/_/g, " ") // Replace underscores with spaces
+        .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize first letter of each word
+
       if (typeof value === "boolean") {
         value = "Yes";
       } else if (typeof value === "object" && value !== null) {
@@ -35,7 +42,7 @@ const generateTable = (sectionTitle, sectionData, doc) => {
           .map(([key, val]) => `${key}: ${val}`)
           .join(", ");
       }
-      return [field, value];
+      return [formattedField, value]; // Use formatted field
     });
 
   // Table start position
@@ -80,17 +87,16 @@ const generateTable = (sectionTitle, sectionData, doc) => {
       const y = cell.y;
       const width = cell.width;
       const height = cell.height;
-      const padding = 1;
       const borderColor = [200, 200, 200]; // Light border color
 
       if (data.section === "head") {
         // Headers: Black background with white text and light border
         doc.setFillColor(0, 0, 0);
-        doc.roundedRect(x, y, width-1.5, height-2, 2, 2, "F");
+        doc.roundedRect(x, y, width - 1.5, height - 2, 2, 2, "F");
 
         doc.setDrawColor(...borderColor);
-        doc.setLineWidth(0.3); // Thin border
-        doc.roundedRect(x, y, width-1.5, height-2, 2, 2, "S");
+        doc.setLineWidth(0.3);
+        doc.roundedRect(x, y, width - 1.5, height - 2, 2, 2, "S");
 
         doc.setTextColor(255, 255, 255);
         doc.text(cell.text, x + 5, y + height / 2 + 2);
@@ -99,11 +105,11 @@ const generateTable = (sectionTitle, sectionData, doc) => {
         const grayColor = [240, 240, 240];
 
         doc.setFillColor(...grayColor);
-        doc.roundedRect(x, y , width-2, height - 2, 2, 2, "F"); // Added 1px gap between rows
+        doc.roundedRect(x, y, width - 2, height - 2, 2, 2, "F");
 
         doc.setDrawColor(...borderColor);
-        doc.setLineWidth(0.3); // Thin border
-        doc.roundedRect(x, y , width-2, height - 2, 2, 2, "S"); // Added 1px gap between rows
+        doc.setLineWidth(0.3);
+        doc.roundedRect(x, y, width - 2, height - 2, 2, 2, "S");
 
         doc.setTextColor(0, 0, 0);
         doc.text(cell.text, x + 5, y + height / 2 + 1);
