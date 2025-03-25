@@ -1,17 +1,7 @@
 import "./App.css";
-import Contact from "./Components/Contact";
-import Personal from "./Components/Personal";
-import Education from "./Components/Education";
-import Health from "./Components/Health";
-import Bank from "./Components/Bank";
-import Upload from "./Components/uploadDocs";
-import Declarations from "./Components/Declarations";
-import Office from "./Components/OfficeUse";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
-import Agreements from "./Components/Agreements";
 import SideBar from "./Components/SideBar";
 import Header from "./Components/Header";
 import Navigation from "./Components/Navigation";
@@ -24,6 +14,7 @@ import generateCompanyPolicyPDF from   "./utility/generateCompanyPolicy.js" ;
 import generateNdaAgreement from   "./utility/generateNdaAgreement.js" ;
 import generateEmployeContract from "./utility/generateEmployeContract.js";
 import generateCodeOfConductPDF from  "./utility/generateCodeOfConduct.js";
+import SendEmailWithPDF from "./utility/SendEmailWithPDF.js";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -287,12 +278,7 @@ function App() {
   };
 
   // Function to handle form submission and generate PDF
-  const generatePDF = () => {
-    if (isDisable) {
-      // Handle errors here if needed
-      console.log(errors);
-    }
-  
+  const generatePDF = async() => {
     const doc = new jsPDF();
     doc.setFontSize(12);
   
@@ -309,7 +295,6 @@ function App() {
     };
   
     let isFirstTable = true; // Track if it's the first table
-    let combinedEducationHealth = false;
 
     const generateTableWithCheck = (title, data) => {
       if (Object.keys(data).length > 0) {  // Ensure section has data before adding
@@ -317,12 +302,6 @@ function App() {
         isFirstTable = false; // Set to false after first table is added
       }
     };
-
-    // Adding header image (if required) and footer image (if required)
-    // doc.addImage(headerImage, 'JPEG', 10, 10, 180, 30); // Example
-  
-    // Generate tables for each section
-    // doc.text("Employment Form Details:", 10, 10); // Title on the first page
   
     generateTableWithCheck("Personal Information", formData.personalInfo, doc);
     generateTableWithCheck("Contact Information", formData.contactInfo, doc);
@@ -333,8 +312,6 @@ function App() {
     generateTableWithCheck("Declarations", formData.declarations, doc);
     generateTableWithCheck("Employee Details", formData.employmentDetails, doc);
   
-    // Optionally, you can add footer image at the end
-    // doc.addImage(footerImage, 'JPEG', 10, 270, 180, 20); // Example
   DataProtectionAgreement(doc);
   generateConflictOfInterestPDF(doc);
   generateAntiBriberyPolicyPDF(doc);
@@ -343,6 +320,12 @@ function App() {
   generateEmployeContract(doc);
   generateCodeOfConductPDF(doc);
     doc.save("employment_form.pdf");
+
+    // const pdfBlob = doc.output("blob");
+
+    // const pdfFile = new File([pdfBlob], "document.pdf", { type: "application/pdf" });
+    // // PDF ko email me send karo
+    // await SendEmailWithPDF(pdfFile);
   };
   
   return (
